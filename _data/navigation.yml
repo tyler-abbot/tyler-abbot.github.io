@@ -1,0 +1,28 @@
+# Site navigation links
+
+- title: About
+  url: /about/
+  excerpt: A bit about me.
+  image: papers1.png
+
+- title: CV
+  url: /cv/
+  excerpt: "My CV."
+  image: papers2.png
+
+- title: Teaching
+  url: /teaching/
+  excerpt: Courses I've taught or helped to teach.
+  image: papers3.png
+
+- title: Research
+  url: /research/
+  excerpt: Things I study.
+  image: papers4.png
+
+- title: Programming
+  url: /programming/
+  excerpt: Programming I do.
+  image: papers5.png
+
+

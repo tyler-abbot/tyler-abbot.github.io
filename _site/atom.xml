@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  
+
+  <title>Tyler Abbot</title>
+  <generator uri="https://github.com/jekyll/jekyll">Jekyll v2.4.0</generator>
+    <icon>http://localhost:4000/apple-touch-icon-precomposed.png</icon>
+  <subtitle>My personal website</subtitle>
+  <link href="http://localhost:4000/atom.xml" rel="self"/>
+  <link href="http://localhost:4000/" rel="alternate" type="text/html"/>
+  <updated>2015-04-23T19:26:12+02:00</updated>
+  <id>http://localhost:4000/</id>
+  <author>
+    <name></name>
+    <uri>http://localhost:4000/</uri>
+    
+  </author>
+
+  
+  <entry>
+    <title>Why Python? I Already Know R!</title>
+    <link href="http://localhost:4000/programming/why-python-i-already-know-r/"/>
+    <updated>2015-04-16T18:13:19+02:00</updated>
+    <id>http://localhost:4000/programming/why-python-i-already-know-r</id>
+    <author>
+      <name></name>
+      <uri>http://localhost:4000/</uri>
+      
+    </author>
+    <content type="html">
+      
+      
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>How to Make Posts.</title>
+    <link href="http://localhost:4000/programming/how-to-make-posts/"/>
+    <updated>2015-04-12T14:55:42+02:00</updated>
+    <id>http://localhost:4000/programming/how-to-make-posts</id>
+    <author>
+      <name></name>
+      <uri>http://localhost:4000/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;This post is just for me to learn a bit about octopress and some formatting stuff.  It will act as a reference for creating posts later, so if you’re an outsider, sorry for the clutter!  This probably won’t be very interesting.&lt;/p&gt;
+
+&lt;p&gt;To generate a post under some heading, open a terminal and navigate to the site folder.  Then, run the following code:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;bundle exec octopress new post &quot;NAME_OF_POST&quot; --dir path/to/post &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This will generate a markdown file at the appropriate point in the file tree.  Jekyll should automatically update the parent page to add a link to the post.&lt;/p&gt;
+
+&lt;p&gt;If you would like to create a new page, the syntax is similar:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;bundle exec octopress new page path/to/page&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;However, jekyll will not automatically create the required links, so you’ll have to do this yourself.&lt;/p&gt;
+
+&lt;p&gt;(All this stuff below is just for later reference)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Type&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;some code&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;foobar&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;HUZZZAAHHHH! The above code took a long time to find, so here’s how it goes in markdown:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-liquid&quot; data-lang=&quot;liquid&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;highlight&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;python&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;linenos&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; import numpy
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; print(&amp;quot;foobar&amp;quot;)
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endhighlight&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlightable&quot;&gt;
+    &lt;p&gt;print 'bar'&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;table class=&quot;highlighttable&quot;&gt;&lt;tr&gt;&lt;td class=&quot;linenos&quot;&gt;&lt;div class=&quot;linenodiv&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;1
+2
+3
+4
+5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
+	&lt;span class=&quot;k&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-240px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
+	&lt;span class=&quot;k&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;To add headlines, type&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; HEADLINE
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; --------&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can add hash tags to the front to change the size of the header.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Some TeX Tips.</title>
+    <link href="http://localhost:4000/programming/some-tex-tips/"/>
+    <updated>2015-04-12T14:52:06+02:00</updated>
+    <id>http://localhost:4000/programming/some-tex-tips</id>
+    <author>
+      <name></name>
+      <uri>http://localhost:4000/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;For later reference when I actually write this post:&lt;/p&gt;
+
+&lt;p&gt;When you want to add new packages, you should store them in&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; /usr/local/texlive/texmf-local/tex/latex/tmabbot&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;or without linenumbers&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/usr/local/texlive/texmf-local/tex/latex/tmabbot&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, you need to run &lt;code&gt;texhash&lt;/code&gt; by typeing&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo /opt/texbin/texhash&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>How to Setup Ipython.</title>
+    <link href="http://localhost:4000/programming/how-to-setup-ipython/"/>
+    <updated>2015-04-12T11:56:17+02:00</updated>
+    <id>http://localhost:4000/programming/how-to-setup-ipython</id>
+    <author>
+      <name></name>
+      <uri>http://localhost:4000/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;nav class=&quot;toc&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#installation&quot;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#setup&quot;&gt;Setup&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#python-ing&quot;&gt;Python-ing!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/nav&gt;
+
+&lt;p&gt;If you are hoping to get into Python and need help getting set-up, this post is for you.  My preference for installing Python is Continuum Analytics’ Anaconda bundle.  It comes with all the packages you need to get started and is quick and easy to install.  I’ll go through the steps for getting up and running quickly in Ubuntu Linux, as well as covering some of the most useful features of Ipython.  If you are using OS or Windows the steps are a little different and you can find a guide &lt;a href=&quot;https://store.continuum.io/static/img/Anaconda-Quickstart.pdf&quot; target=&quot;_blank&quot;&gt;HERE.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;First, you’ll need to download Anaconda &lt;a href=&quot;https://store.continuum.io/cshop/anaconda/&quot; target=&quot;_blank&quot;&gt;HERE.&lt;/a&gt;  The site will detect your system and suggest the proper insall.  NOTE: If you are running a 32-bit operating system, you will have problems in the future if you want to install more advanced tools like PyCuda (I had to reinstall my entire operating system).  Also, I suggest you go with a Python 2.X version.  Although Python 3.X is available, some packages do not have good backwards compatibility.&lt;/p&gt;
+
+&lt;p&gt;Second, open up a terminal and navigate to your Dowloads folder by typing&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;Downloads/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Once there, execute the installer by typing in the terminal&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;bash NAME_OF_FILE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;where you replace NAME_OF_FILE with the name of your download, which changes with version.  You’ll be prompted to specify an install location.  Use the default so that you can easily find what you are looking for later.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+&lt;p&gt;Next, you need to add the anaconda file to your path variable, so that terminal can find it.  As a side note, you can learn more about what PATH is and why it always seems to be a problem &lt;a href=&quot;http://www.linfo.org/path_env_var.html&quot; target=&quot;_blank&quot;&gt;HERE.&lt;/a&gt;  To see what the path variable is type the following in the terminal&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If you do not see a folder containing the word “anaconda”, you need to update the PATH.  Type the following into the terminal&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/path/to/anaconda:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Which will append the directory to your path.  My anaconda directory is under &lt;code&gt;/home/user_name/anaconda/bin&lt;/code&gt;, but yours might be slightly different.&lt;/p&gt;
+
+&lt;p&gt;Now open a new terminal window and type &lt;code&gt;ipython&lt;/code&gt;.  That’s it!  You’re now using Python!&lt;/p&gt;
+
+&lt;h2 id=&quot;python-ing&quot;&gt;Python-ing!&lt;/h2&gt;
+&lt;p&gt;Now that you have your sweet Ipython set-up, what can it do?!  There are several ways to work with Ipython.  First, you can work directly at the command line.  By typing &lt;code&gt;ipython&lt;/code&gt; at the terminal you open an “Ipython shell”, where whatever you type will run in Python.  Another way to work on more complex projects is to write Python programs in a text-editor, such as Vim or Lightbox (post to come), and then to run these programs in your Ipython shell.  Finally, one of the coolest things you can do is to use the Ipython Notebook.  Open up a terminal and type&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;ipython&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;notebook&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This will open up an Ipython Notebook session in your default browser.  Then you can create a new ipython notebook, like &lt;a href=&quot;http://nbviewer.ipython.org/github/tyler-abbot/tyler-abbot.github.io/tree/master/misc/test.ipynb&quot; target=&quot;_blank&quot;&gt;this one&lt;/a&gt;.  Ipython notebooks are great teaching tools, so I’ll be using them often on this site to describe lots of things.&lt;/p&gt;
+
+&lt;p&gt;That’s it!  You are now ready to learn to program in Python.  For more on different packages, best-practices (as far as an economist knows best practices), and lots of other stuff about Python, head &lt;a href=&quot;http://localhost:4000/programming/python.html&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;. &lt;/p&gt;
+
+
+    </content>
+  </entry>
+  
+  
+</feed>
