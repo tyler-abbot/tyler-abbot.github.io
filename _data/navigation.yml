@@ -1,27 +1,27 @@
 # Site navigation links
 
 - title: About
-  url: /about/
+  url: {{ site.url }}/about/
   excerpt: A bit about me.
   image: papers1.png
 
 - title: CV
-  url: /cv/
+  url: {{ site.url }}/cv/
   excerpt: "My CV."
   image: papers2.png
 
 - title: Teaching
-  url: /teaching/
+  url: {{ site.url }}/teaching/
   excerpt: Courses I've taught or helped to teach.
   image: papers3.png
 
 - title: Research
-  url: /research/
+  url: {{ site.url }}/research/
   excerpt: Things I study.
   image: papers4.png
 
 - title: Programming
-  url: /programming/
+  url: {{ site.url }}/programming/
   excerpt: Programming I do.
   image: papers5.png
 
