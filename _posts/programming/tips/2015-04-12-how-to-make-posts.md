@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "How to Make Posts."
+title: "02 - How to Make Posts in Jekyll."
 modified:
 categories: programming
 subcategories: tips

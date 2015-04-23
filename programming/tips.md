@@ -13,7 +13,7 @@ ads: false
 ---
 
 <div class="tiles">
-{% for post in site.categories['programming']%}
+{% for post in site.categories['programming'] reversed %}
     {% if post.subcategories == 'tips' %}
 	    {% include post-grid.html %}
     {% endif %}

@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "How to Setup Ipython."
+title: "01 - How to Setup Ipython."
 modified:
 categories: programming
 subcategories: tips

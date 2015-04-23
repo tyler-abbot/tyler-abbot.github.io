@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "Some TeX Tips."
+title: "01 - Some TeX Tips."
 modified:
 categories: programming
 subcategories: tex
