@@ -12,3 +12,4 @@ image:
 ads: false
 ---
 
+Fall 2014 - <a href="https://sites.google.com/site/zsofiabarany/teaching/intermediate-macro" target="_blank"><strong>Intermediate Macroeconomics</strong></a>, teaching assitant to Zsofia Barany.

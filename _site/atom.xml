@@ -7,7 +7,7 @@
   <subtitle>My personal website</subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="/" rel="alternate" type="text/html"/>
-  <updated>2015-04-26T14:54:39+02:00</updated>
+  <updated>2015-04-26T20:55:49+02:00</updated>
   <id>/</id>
   <author>
     <name></name>
@@ -15,6 +15,76 @@
     
   </author>
 
+  
+  <entry>
+    <title>03 - GitHub</title>
+    <link href="/programming/github/"/>
+    <updated>2015-04-26T18:31:06+02:00</updated>
+    <id>/programming/github</id>
+    <author>
+      <name></name>
+      <uri>/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;nav class=&quot;toc&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction-to-github&quot;&gt;Introduction to GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#signing-up-for-github&quot;&gt;Signing Up for GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#creating-a-repository&quot;&gt;Creating a Repository&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#adding-files-to-a-repository&quot;&gt;Adding Files to a Repository&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#further-reading&quot;&gt;Further Reading&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/nav&gt;
+
+&lt;p&gt;I signed up for GitHub to create this website and the whole process seemed incredibly difficult and vague.  In this post I’m going to introduce GitHub and really quickly describe signing up, creating a repository, and editing that repository.  If you want a more hands on and thorough lesson, you should head over to Code School for their &lt;a href=&quot;https://www.codeschool.com/courses/try-git&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;Try Git&lt;/strong&gt;&lt;/a&gt; course.&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction-to-github&quot;&gt;Introduction to GitHub&lt;/h2&gt;
+&lt;p&gt;Git is a file sharing website.  That’s it.  But the real power in Git comes from the ability to download, update, and share code easily.  Essentially, if there is an open source project that you would like to contribute to, you can “fork” that repository.  Then, if you would like to share your changes, you simply submit a “pull request” to the repository’s author.  They can see by your profile what you have done and how trustworthy you are.&lt;/p&gt;
+
+&lt;p&gt;Also, one bonus of git is their free website hosting (which is where this website is) through GitHub Pages.  If you would like to set up a GitHub website, check out this &lt;a href=&quot;https://pages.github.com/&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;page&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;signing-up-for-github&quot;&gt;Signing Up for GitHub&lt;/h2&gt;
+&lt;p&gt;Creating a GitHub account is really easy.  Just go to &lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;https://github.com/&lt;/strong&gt;&lt;/a&gt; and follow the steps.  You’ll also need to &lt;a href=&quot;http://git-scm.com/downloads&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;download and install&lt;/strong&gt;&lt;/a&gt; git.  You might want to use a GUI client, but it is up to you how you want to work with Git.  This tutorial will use the command line.&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-a-repository&quot;&gt;Creating a Repository&lt;/h2&gt;
+&lt;p&gt;The first thing you need to do is to create a repository on your GitHub page by clicking on the little ‘+’ sign in the upper right hand corner.  This will take you to a page that will give you options for creating repositories from the command line in the future.  You’ll also be given a URL for your repository, which you should copy to the clipboard.  Click on the README link to create a readme file in your repository and add some blablabla, then save the changes.&lt;/p&gt;
+
+&lt;p&gt;Next, you need to create a local repository.  In the terminal, &lt;code&gt;cd&lt;/code&gt; into whatever directory you want to be the parent directory of your local git repository.  Once there, type&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git clone https://github.com/blablabla&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;… obviously replacing the url by the one you just copied.  This will copy all of the files from your repository on GitHub and intitialize your local repository.  &lt;/p&gt;
+
+&lt;h2 id=&quot;adding-files-to-a-repository&quot;&gt;Adding Files to a Repository&lt;/h2&gt;
+
+&lt;p&gt;Now that you have a repository, let’s learn to make some changes.  First, create any kind of file in the local repository you want.  Seriously, just save a .txt haiku about your cat, it doesn’t really matter.  Now that it is done, type&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git status&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You should see a red &lt;code&gt;cat_haiku.txt&lt;/code&gt;.  This means there is a new file in your local repository that has not yet been staged.  What you need to do is add your new file to the staging area.  There are several ways to do this, by name, by file type, etc., but one nice one is to just add ALL of the new files:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git add --all&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now if you run &lt;code&gt;git status&lt;/code&gt; again, you’ll see that &lt;code&gt;cat_haiku.txt&lt;/code&gt; is ready to commit.  Finally, to commit the changes to the repository, type the following&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git commit -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;A message&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;where &lt;code&gt;-m &quot;A message&quot;&lt;/code&gt; allows you to include the commit message directly in the command line (try doing this command without it, it is really not fun).&lt;/p&gt;
+
+&lt;p&gt;Now, your updated project is saved in the GitHub repository, but it is not yet shared.  In fact, the new haiku won’t even show up on your personal page.  How will anyone read it!?  The last thing you need to do is to push the repository.  Type&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git push origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You’ll be prompted for your username and password.  Once that’s done you can celebrate!&lt;/p&gt;
+
+&lt;h2 id=&quot;further-reading&quot;&gt;Further Reading&lt;/h2&gt;
+&lt;p&gt;Git is a really powerful tool, but I guess the assumption is that you are a computer programmer who knows all about this stuff, because the how-to guides are pretty difficult to find/hard to understand.  However, I stumbled across &lt;a href=&quot;https://sethrobertson.github.io/GitBestPractices/&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;this&lt;/strong&gt;&lt;/a&gt; great page that gathers a bunch of useful links into one place.  I highly recommend you take a few hours to read and learn about everything Git can do and how to use it.&lt;/p&gt;
+
+    </content>
+  </entry>
   
   <entry>
     <title>01 - Why Python? I Already Know R!</title>
@@ -80,7 +150,11 @@
     </author>
     <content type="html">
       
-      &lt;p&gt;This post is just for me to learn a bit about octopress and some formatting stuff.  It will act as a reference for creating posts later, so if you’re an outsider, sorry for the clutter!  This probably won’t be very interesting.&lt;/p&gt;
+      &lt;p&gt;Ok, so this is a selfish post, but I have been struggling to get these posts looking good, so I’m leaving this here for later reference.  This post is just for me to learn a bit about octopress and some formatting stuff so if you’re an outsider, sorry for the clutter!  This probably won’t be very interesting.&lt;/p&gt;
+
+&lt;p&gt;To spin up a local server navigate to the local repository folder and type&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve --watch&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;To generate a post under some heading, open a terminal and navigate to the site folder.  Then, run the following code:&lt;/p&gt;
 
@@ -94,7 +168,7 @@
 
 &lt;p&gt;However, jekyll will not automatically create the required links, so you’ll have to do this yourself.&lt;/p&gt;
 
-&lt;p&gt;(All this stuff below is just for later reference)&lt;/p&gt;
+&lt;h2 id=&quot;formatting-junk&quot;&gt;Formatting Junk&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;Type&lt;/code&gt;&lt;/pre&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;some code&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -109,22 +183,6 @@
 &lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; print(&amp;quot;foobar&amp;quot;)
 &lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endhighlight&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlightable&quot;&gt;
-    &lt;p&gt;print 'bar'&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;table class=&quot;highlighttable&quot;&gt;&lt;tr&gt;&lt;td class=&quot;linenos&quot;&gt;&lt;div class=&quot;linenodiv&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;1
-2
-3
-4
-5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
-	&lt;span class=&quot;k&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-240px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
-	&lt;span class=&quot;k&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;To add headlines, type&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; HEADLINE
@@ -132,14 +190,19 @@
 
 &lt;p&gt;You can add hash tags to the front to change the size of the header.&lt;/p&gt;
 
+&lt;p&gt;If you want a link that opens in a new tab use&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;www.website.com&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;_blank&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Link Text&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
     </content>
   </entry>
   
   <entry>
-    <title>01 - Some TeX Tips.</title>
-    <link href="/programming/some-tex-tips/"/>
+    <title>01 - Packages.</title>
+    <link href="/programming/packages/"/>
     <updated>2015-04-12T14:52:06+02:00</updated>
-    <id>/programming/some-tex-tips</id>
+    <id>/programming/packages</id>
     <author>
       <name></name>
       <uri>/</uri>
@@ -147,19 +210,39 @@
     </author>
     <content type="html">
       
-      &lt;p&gt;For later reference when I actually write this post:&lt;/p&gt;
+      &lt;nav class=&quot;toc&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#package-management&quot;&gt;Package Management&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#bibliography-management&quot;&gt;Bibliography Management&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;When you want to add new packages, you should store them in&lt;/p&gt;
+&lt;/nav&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; /usr/local/texlive/texmf-local/tex/latex/tmabbot&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Using LaTeX is mandatory for anyone who needs to type math, but getting the whole thing set-up can be a gigantic pain.  The key to a good install is to get TeX live installed right so that you have a good package manager, then to properly place your packages in the file tree so TexLive can find them.  If you are running Ubuntu or Debian, I suggest following &lt;a href=&quot;http://tex.stackexchange.com/questions/1092/how-to-install-vanilla-texlive-on-debian-or-ubuntu/95373#95373&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;these&lt;/strong&gt;&lt;/a&gt; super thorough instructions on how to install Tex Live.&lt;/p&gt;
 
-&lt;p&gt;or without linenumbers&lt;/p&gt;
+&lt;h2 id=&quot;package-management&quot;&gt;Package Management&lt;/h2&gt;
+
+&lt;p&gt;If you are writing finance papers (or any other economics papers, for that matter) you’ll eventually have to put them in a format to match a journal, or you’ll just want a nicer format than a standard LaTeX article.  In order to do this, you’ll probably need to download some special packages.  When you want to add these custom packages, you should store them in a folder under &lt;code&gt;texmf&lt;/code&gt;, in particular I use&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/usr/local/texlive/texmf-local/tex/latex/tmabbot&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Then, you need to run &lt;code&gt;texhash&lt;/code&gt; by typeing&lt;/p&gt;
+&lt;p&gt;You should store any .sty, .bst, or .cls files you download here for easy reference.  One key thing to remember is to run &lt;code&gt;texhash&lt;/code&gt; whenever you are done.  Since I followed the directions in the link in the first paragraph, I have a symbolic link.  Thus I have to type&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo /opt/texbin/texhash&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;into a terminal.  This will update the packages available in Tex and you should be able to compile your papers.&lt;/p&gt;
+
+&lt;p&gt;A great resource for finance paper formatting and a much more thorough introduction to LaTex can be found on Richard Stanton’s &lt;a href=&quot;http://faculty.haas.berkeley.edu/stanton/texintro/&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;website&lt;/strong&gt;&lt;/a&gt; &lt;/p&gt;
+
+&lt;h2 id=&quot;bibliography-management&quot;&gt;Bibliography Management&lt;/h2&gt;
+
+&lt;p&gt;If you tend to use the same references often, you can create one large bibliography file and store it in the file tree so that you don’t have to move it from place to place.  I have had a lot of trouble getting my bibliography well placed, so I’ve come up with a bit of a workaround.  I place my .bib file in any some directory (for me it is called “Writing”) and then reference this file in my latex documents using the bibliography command. You simply use &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span class=&quot;k&quot;&gt;\bibliography&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;{&lt;/span&gt;/path/to/bibliography&lt;span class=&quot;nb&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;instead of just&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span class=&quot;k&quot;&gt;\bibliography&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;{}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
     </content>

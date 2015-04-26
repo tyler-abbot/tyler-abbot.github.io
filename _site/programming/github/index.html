@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>03 - GitHub • Tyler Abbot</title>
+    
+    <meta name="keywords" content="">
+    
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="03 - GitHub">
+	
+	
+	
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="/images/mandelbrot4.png">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="03 - GitHub">
+	
+	<meta property="og:url" content="/programming/github/">
+	<meta property="og:site_name" content="Tyler Abbot">
+
+    <link rel="canonical" href="/programming/github/">
+
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Tyler Abbot Atom Feed">
+
+    <link href="/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+    
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="/js/vendor/html5shiv.min.js"></script>
+      <script src="/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="/" class="site-title">Tyler Abbot</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">Tyler Abbot</a></li>
+	
+    
+        
+    
+    <li><a href="/about/" >About</a></li>
+  
+    
+        
+    
+    <li><a href="/cv/" >CV</a></li>
+  
+    
+        
+    
+    <li><a href="/teaching/" >Teaching</a></li>
+  
+    
+        
+    
+    <li><a href="/research/" >Research</a></li>
+  
+    
+        
+    
+    <li><a href="/programming/" >Programming</a></li>
+  
+</ul>
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+<!--    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>Tyler Abbot <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="/about/">
+        <img src="/images/papers1.png" alt="teaser" class="teaser">
+        <div class="title">About</div>
+        <p class="excerpt">A bit about me.</p>
+      </a>
+    </li><li>
+      <a href="/cv/">
+        <img src="/images/papers2.png" alt="teaser" class="teaser">
+        <div class="title">CV</div>
+        <p class="excerpt">My CV.</p>
+      </a>
+    </li><li>
+      <a href="/teaching/">
+        <img src="/images/papers3.png" alt="teaser" class="teaser">
+        <div class="title">Teaching</div>
+        <p class="excerpt">Courses I've taught or helped to teach.</p>
+      </a>
+    </li><li>
+      <a href="/research/">
+        <img src="/images/papers4.png" alt="teaser" class="teaser">
+        <div class="title">Research</div>
+        <p class="excerpt">Things I study.</p>
+      </a>
+    </li><li>
+      <a href="/programming/">
+        <img src="/images/papers5.png" alt="teaser" class="teaser">
+        <div class="title">Programming</div>
+        <p class="excerpt">Programming I do.</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+ -->
+
+    <div id="page-wrapper">
+      <div id="main" role="main">
+	<article class="wrap" itemscope itemtype="http://schema.org/Article">
+		
+		
+  <nav class="breadcrumbs">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="" itemprop="url">
+        <span itemprop="title">Home</span>
+      </a> › 
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="/programming/" itemprop="url">
+        <span itemprop="title">programming</span>
+      </a> › 
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="/programming/tips.html" itemprop="url">
+        <span itemprop="title">tips</span>
+      </a>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+    <!--  <a href="/programming/" itemprop="url"> -->
+
+		<div class="page-title">
+			<h1>03 - GitHub</h1>
+		</div>
+		<div class="inner-wrap">
+			<div id="content" class="page-content" itemprop="articleBody">
+				<nav class="toc">
+<ul id="markdown-toc">
+  <li><a href="#introduction-to-github">Introduction to GitHub</a></li>
+  <li><a href="#signing-up-for-github">Signing Up for GitHub</a></li>
+  <li><a href="#creating-a-repository">Creating a Repository</a></li>
+  <li><a href="#adding-files-to-a-repository">Adding Files to a Repository</a></li>
+  <li><a href="#further-reading">Further Reading</a></li>
+</ul>
+
+</nav>
+
+<p>I signed up for GitHub to create this website and the whole process seemed incredibly difficult and vague.  In this post I’m going to introduce GitHub and really quickly describe signing up, creating a repository, and editing that repository.  If you want a more hands on and thorough lesson, you should head over to Code School for their <a href="https://www.codeschool.com/courses/try-git" target="_blank"><strong>Try Git</strong></a> course.</p>
+
+<h2 id="introduction-to-github">Introduction to GitHub</h2>
+<p>Git is a file sharing website.  That’s it.  But the real power in Git comes from the ability to download, update, and share code easily.  Essentially, if there is an open source project that you would like to contribute to, you can “fork” that repository.  Then, if you would like to share your changes, you simply submit a “pull request” to the repository’s author.  They can see by your profile what you have done and how trustworthy you are.</p>
+
+<p>Also, one bonus of git is their free website hosting (which is where this website is) through GitHub Pages.  If you would like to set up a GitHub website, check out this <a href="https://pages.github.com/" target="_blank"><strong>page</strong></a>.</p>
+
+<h2 id="signing-up-for-github">Signing Up for GitHub</h2>
+<p>Creating a GitHub account is really easy.  Just go to <a href="https://github.com/" target="_blank"><strong>https://github.com/</strong></a> and follow the steps.  You’ll also need to <a href="http://git-scm.com/downloads" target="_blank"><strong>download and install</strong></a> git.  You might want to use a GUI client, but it is up to you how you want to work with Git.  This tutorial will use the command line.</p>
+
+<h2 id="creating-a-repository">Creating a Repository</h2>
+<p>The first thing you need to do is to create a repository on your GitHub page by clicking on the little ‘+’ sign in the upper right hand corner.  This will take you to a page that will give you options for creating repositories from the command line in the future.  You’ll also be given a URL for your repository, which you should copy to the clipboard.  Click on the README link to create a readme file in your repository and add some blablabla, then save the changes.</p>
+
+<p>Next, you need to create a local repository.  In the terminal, <code>cd</code> into whatever directory you want to be the parent directory of your local git repository.  Once there, type</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/blablabla</code></pre></div>
+
+<p>… obviously replacing the url by the one you just copied.  This will copy all of the files from your repository on GitHub and intitialize your local repository.  </p>
+
+<h2 id="adding-files-to-a-repository">Adding Files to a Repository</h2>
+
+<p>Now that you have a repository, let’s learn to make some changes.  First, create any kind of file in the local repository you want.  Seriously, just save a .txt haiku about your cat, it doesn’t really matter.  Now that it is done, type</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git status</code></pre></div>
+
+<p>You should see a red <code>cat_haiku.txt</code>.  This means there is a new file in your local repository that has not yet been staged.  What you need to do is add your new file to the staging area.  There are several ways to do this, by name, by file type, etc., but one nice one is to just add ALL of the new files:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git add --all</code></pre></div>
+
+<p>Now if you run <code>git status</code> again, you’ll see that <code>cat_haiku.txt</code> is ready to commit.  Finally, to commit the changes to the repository, type the following</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git commit -m <span class="s2">&quot;A message&quot;</span></code></pre></div>
+
+<p>where <code>-m "A message"</code> allows you to include the commit message directly in the command line (try doing this command without it, it is really not fun).</p>
+
+<p>Now, your updated project is saved in the GitHub repository, but it is not yet shared.  In fact, the new haiku won’t even show up on your personal page.  How will anyone read it!?  The last thing you need to do is to push the repository.  Type</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git push origin master</code></pre></div>
+
+<p>You’ll be prompted for your username and password.  Once that’s done you can celebrate!</p>
+
+<h2 id="further-reading">Further Reading</h2>
+<p>Git is a really powerful tool, but I guess the assumption is that you are a computer programmer who knows all about this stuff, because the how-to guides are pretty difficult to find/hard to understand.  However, I stumbled across <a href="https://sethrobertson.github.io/GitBestPractices/" target="_blank"><strong>this</strong></a> great page that gathers a bunch of useful links into one place.  I highly recommend you take a few hours to read and learn about everything Git can do and how to use it.</p>
+
+				<hr />
+				<footer class="page-footer">
+					
+
+
+<div class="author-image">
+	<img src="/images/bio-photo2.jpg" alt="">
+</div><!-- ./author-image -->
+<div class="author-content">
+	<h3 class="author-name" >Written by <span itemprop="author"></span></h3>
+	<p class="author-bio"></p>
+</div><!-- ./author-content -->
+					<div class="inline-btn">
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=03%20-%20GitHub&amp;url=/programming/github/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=/programming/github/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=/programming/github/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+</div><!-- /.share-this -->
+					<div class="page-meta">
+	<p>Updated <time datetime="2015-04-26T18:31:06Z" itemprop="datePublished">April 26, 2015</time></p>
+</div><!-- /.page-meta -->
+				</footer><!-- /.footer -->
+				<aside>
+					
+				</aside>
+			</div><!-- /.content -->
+		</div><!-- /.inner-wrap -->
+		
+	</article><!-- ./wrap -->
+</div><!-- /#main -->
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+        
+      
+			<li><a href="" ></a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2015 <a href="">Tyler Abbot</a> powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/" rel="nofollow">Skinny Bones</a>.</p>
+</footer>
+    </div>
+
+    <script src="/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/js/main.js"></script>
+
+  </body>
+
+</html>

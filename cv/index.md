@@ -11,5 +11,5 @@ image:
 ads: false
 ---
 
-<p><a href="/misc/Abbot.CV.pdf" class="btn-inverse">Long Form/Academic CV</a></p>
-<p><a href="/misc/Abbot.CV.pdf" class="btn-inverse">Short Form/Professional CV</a></p>
+<p><a href="/misc/Abbot.CV.pdf" class="btn-inverse" target="_blank">Long Form/Academic CV</a></p>
+<p><a href="/misc/Abbot.CV.pdf" class="btn-inverse" target="_blank">Short Form/Professional CV</a></p>

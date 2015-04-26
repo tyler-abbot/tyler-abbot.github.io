@@ -155,7 +155,11 @@
 		</div>
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
-				<p>This post is just for me to learn a bit about octopress and some formatting stuff.  It will act as a reference for creating posts later, so if you’re an outsider, sorry for the clutter!  This probably won’t be very interesting.</p>
+				<p>Ok, so this is a selfish post, but I have been struggling to get these posts looking good, so I’m leaving this here for later reference.  This post is just for me to learn a bit about octopress and some formatting stuff so if you’re an outsider, sorry for the clutter!  This probably won’t be very interesting.</p>
+
+<p>To spin up a local server navigate to the local repository folder and type</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">bundle <span class="nb">exec </span>jekyll serve --watch</code></pre></div>
 
 <p>To generate a post under some heading, open a terminal and navigate to the site folder.  Then, run the following code:</p>
 
@@ -169,7 +173,7 @@
 
 <p>However, jekyll will not automatically create the required links, so you’ll have to do this yourself.</p>
 
-<p>(All this stuff below is just for later reference)</p>
+<h2 id="formatting-junk">Formatting Junk</h2>
 <pre><code>Type</code></pre>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">some code</code></pre></div>
@@ -184,28 +188,17 @@
 <span class="lineno">3</span> print(&quot;foobar&quot;)
 <span class="lineno">4</span> <span class="p">{%</span><span class="w"> </span><span class="nt">endhighlight</span><span class="w">  </span><span class="p">%}</span></code></pre></div>
 
-<div class="highlightable">
-    <p>print 'bar'</p>
-</div>
-
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-css" data-lang="css">1
-2
-3
-4
-5</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="nf">#container</span> <span class="p">{</span>
-	<span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>  
-	<span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="m">-240px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>  
-	<span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-
 <p>To add headlines, type</p>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno">1</span> HEADLINE
 <span class="lineno">2</span> --------</code></pre></div>
 
 <p>You can add hash tags to the front to change the size of the header.</p>
+
+<p>If you want a link that opens in a new tab use</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno">1</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;www.website.com&quot;</span> <span class="na">target=</span><span class="s">&quot;_blank&quot;</span><span class="nt">&gt;</span>Link Text<span class="nt">&lt;/a&gt;</span></code></pre></div>
+
 
 				<hr />
 				<footer class="page-footer">
