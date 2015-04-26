@@ -14,7 +14,7 @@ date: 2015-04-12T11:56:17+02:00
 ---
 {% include toc.html %}
 
-If you are hoping to get into Python and need help getting set-up, this post is for you.  My preference for installing Python is Continuum Analytics' Anaconda bundle.  It comes with all the packages you need to get started and is quick and easy to install.  I'll go through the steps for getting up and running quickly in Ubuntu Linux, as well as covering some of the most useful features of Ipython.  If you are using OS or Windows the steps are a little different and you can find a guide <a href="https://store.continuum.io/static/img/Anaconda-Quickstart.pdf" target="_blank">HERE.</a>
+If you are hoping to get into Python and need help getting set-up, this post is for you.  My preference for installing Python is Continuum Analytics' Anaconda bundle.  It comes with all the packages you need to get started and is quick and easy to install.  I'll go through the steps for getting up and running quickly in Ubuntu Linux, as well as covering some of the most useful basic features of Ipython.  If you are using OS or Windows the steps are a little different and you can find a guide <a href="https://store.continuum.io/static/img/Anaconda-Quickstart.pdf" target="_blank">HERE.</a>
 
 Installation
 ------------
