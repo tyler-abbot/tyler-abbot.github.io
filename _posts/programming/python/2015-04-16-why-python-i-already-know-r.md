@@ -44,5 +44,5 @@ Personally, I am only familiar with academia.  Every professor will only know Ma
 Where are things heading?
 ---------------
 
-Neither one of these languages is going anywhere soon.  That being said, I think that the number of passionate programmers and statisticians working on Python is growing in comparison to R and that in the future we'll need more versatile tools.
+Neither one of these languages is going anywhere soon.  That being said, I think that the number of passionate programmers and statisticians working on Python is growing in comparison to R and that in the future we'll need more versatile tools.  I have spent so much time now in Python, that I don't even consider opening up R, even for statistics.
 
