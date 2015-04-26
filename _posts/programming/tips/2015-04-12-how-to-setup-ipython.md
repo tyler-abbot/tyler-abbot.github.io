@@ -66,3 +66,13 @@ This will open up an Ipython Notebook session in your default browser.  Then you
 
 That's it!  You are now ready to learn to program in Python.  For more on different packages, best-practices (as far as an economist knows best practices), and lots of other stuff about Python, head <a href="{{ site.url }}/programming/python.html" target="_blank">here</a>. 
 
+For some outside sources so you can hit the ground running, check out these great resources:
+
+><a href="https://wakari.io" class="btn-inverse"><strong>Wakari</strong></a><br>
+>This website allows you to use a remote Python environment over the internet.  That way, you can use Python from any terminal.  Be warned: if you are in a large institution, they may have a firewall that blocks the necessary ports!  You'll just have to try it out.
+
+><a href="http://quant-econ.net" class="btn-inverse"><strong>Quant-Econ</strong></a><br>
+>This is a great resource for learning Python and Julia for economics.  The site is run by Thomas J. Sargent and John Stachursky.  The course proceeds through numerical examples and practical exercises.
+
+><a href="https://www.kevinsheppard.com/Python_for_Econometrics" class="btn-inverse"><strong>Python for Econometrics</strong></a><br>
+>This is a site that I've been meaning to check out.  One of the biggest complaints by economists is the lack of econometric tools in Python.  However, things are beginning to develop as more economists transition over.
