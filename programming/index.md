@@ -6,7 +6,7 @@ modified:
 excerpt:
 image:
   feature: lorenz.jpg
-  credit: Jerry Ylilammi, ylilammi.com
+  credit: Lorenz Attractor, Jerry Ylilammi, ylilammi.com
   teaser:
   thumb:
 ads: false
