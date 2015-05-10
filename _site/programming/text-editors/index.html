@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>01 - Packages. • Tyler Abbot</title>
+    <title>04 - Text Editors • Tyler Abbot</title>
     
     <meta name="keywords" content="">
     
     
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="01 - Packages.">
+	<meta name="twitter:title" content="04 - Text Editors">
 	
 	
 	
@@ -19,12 +19,12 @@
 	<!-- Open Graph -->
 	<meta property="og:locale" content="">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="01 - Packages.">
+	<meta property="og:title" content="04 - Text Editors">
 	
-	<meta property="og:url" content="/programming/packages/">
+	<meta property="og:url" content="/programming/text-editors/">
 	<meta property="og:site_name" content="Tyler Abbot">
 
-    <link rel="canonical" href="/programming/packages/">
+    <link rel="canonical" href="/programming/text-editors/">
 
     <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Tyler Abbot Atom Feed">
 
@@ -153,8 +153,8 @@
         <span itemprop="title">programming</span>
       </a> › 
     <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-      <a href="/programming/tex.html" itemprop="url">
-        <span itemprop="title">tex</span>
+      <a href="/programming/tips.html" itemprop="url">
+        <span itemprop="title">tips</span>
       </a>
     </span>
   </nav><!-- /.breadcrumbs -->
@@ -162,44 +162,49 @@
     <!--  <a href="/programming/" itemprop="url"> -->
 
 		<div class="page-title">
-			<h1>01 - Packages.</h1>
+			<h1>04 - Text Editors</h1>
 		</div>
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
 				<nav class="toc">
 <ul id="markdown-toc">
-  <li><a href="#package-management">Package Management</a></li>
-  <li><a href="#bibliography-management">Bibliography Management</a></li>
+  <li><a href="#why-this-post-is-so-one-sided">Why This Post Is So One Sided</a></li>
+  <li><a href="#installing-atom">Installing Atom</a></li>
+  <li><a href="#using-atom">Using Atom</a></li>
 </ul>
 
 </nav>
 
-<p>Using LaTeX is mandatory for anyone who needs to type math, but getting the whole thing set-up can be a gigantic pain.  The key to a good install is to get TeX live installed right so that you have a good package manager, then to properly place your packages in the file tree so TexLive can find them.  If you are running Ubuntu or Debian, I suggest following <a href="http://tex.stackexchange.com/questions/1092/how-to-install-vanilla-texlive-on-debian-or-ubuntu/95373#95373" target="_blank"><strong>these</strong></a> super thorough instructions on how to install Tex Live.</p>
+<p>This post is meant to help you get started programming as quickly as possible and, if you are already familiar with text editors, is pretty one sided.  We are going to talk about how to install and use <a href="https://www.atom.io" target="blank"><strong>Atom</strong></a>, the open-source text editor from GitHub.</p>
 
-<h2 id="package-management">Package Management</h2>
+<h2 id="why-this-post-is-so-one-sided">Why This Post Is So One Sided</h2>
+<p>When I first started programming (at least in the recent past) I did so in Python and wanted to do the cool things that the cool programmers were doing, so I jumped straight in with <a href="https://www.vim.org" target="blank"><strong>Vim</strong></a>.  If you ask any professional Unix programmer, there are only two text editors, Vim and Emacs, but these two programs are like the great pyramids.  They are incredibly powerful and useful for those who know how to use them, but for others they are like learning to read hyroglyphs.  For example, the first time I set up Vim I spent an entire day just trying to find and edit my vimrc file to change the colorscheme, because if you know where it is then no problem, but if you don’t then you are lost and no one else seems to have the same problem!!!  Oh, and add the fact that keyboard shortcuts are completely different from standards, like “copy” is “y” for “yank”.</p>
 
-<p>If you are writing finance papers (or any other economics papers, for that matter) you’ll eventually have to put them in a format to match a journal, or you’ll just want a nicer format than a standard LaTeX article.  In order to do this, you’ll probably need to download some special packages.  When you want to add these custom packages, you should store them in a folder under <code>texmf</code>, in particular I use</p>
+<p>That little rant over, this post is about how to get started quickly with a versatile, cheap, and nice text editor.  Atom is all of these.  GitHub developed Atom as a free, open source text editor with their own development needs in mind.  Apparently Atom is very similar to another editor, <a href="https://www.sublimetext.com" target="blank"><strong>Sublime</strong></a>, but Atom has near weekly new releases and is free, compared to yearly releases and a $70 price tag.  So, we’ll see how easy Atom is to install and set-up, then we’ll talk a little about other options… maybe.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/texlive/texmf-local/tex/latex/tmabbot</code></pre></div>
+<p>If you’re interested in some reviews or comparisons, check out these links:</p>
 
-<p>You should store any .sty, .bst, or .cls files you download here for easy reference.  One key thing to remember is to run <code>texhash</code> whenever you are done.  Since I followed the directions in the link in the first paragraph, I have a symbolic link.  Thus I have to type</p>
+<ul>
+  <li><a href="http://blog.takipi.com/sublime-vs-atom-text-editor-battles/" target="blank"><strong>Sublime v. Atom</strong></a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Comparison_of_text_editors" target="blank"><strong>All text editors ever, forever… seriously.</strong></a></li>
+  <li><a href="http://lifehacker.com/five-best-text-editors-1564907215" target="blank"><strong>Comparing the “top 5”.</strong></a></li>
+</ul>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo /opt/texbin/texhash</code></pre></div>
+<h2 id="installing-atom">Installing Atom</h2>
+<p>The first thing you should do is head over to the <a href="https://atom.io/docs" target="blank"><strong>Atom Documentation.</strong></a>  You can follow the “Getting Started” link, where you’ll learn about Atom and then how to install Atom on Apple, Windows, Debian, or Redhat, all in about 5 minutes.</p>
 
-<p>into a terminal.  This will update the packages available in Tex and you should be able to compile your papers.</p>
+<p>If you are using Ubuntu, life used to be terrible and you would have to build Atom from scratch.  However, <a href="http://www.webupd8.org/2014/05/install-atom-text-editor-in-ubuntu-via-ppa.html" target="blank"><strong>Andrew at webupd8.org has created a repository so you can install Atom super fast!</strong></a>  To install atom, simply pop open a terminal (by typing <code>ctrl + alt + t</code>) and then type the following</p>
 
-<p>A great resource for finance paper formatting and a much more thorough introduction to LaTex can be found on Richard Stanton’s <a href="http://faculty.haas.berkeley.edu/stanton/texintro/" target="_blank"><strong>website</strong></a> </p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo add-apt-repository ppa:webupd8team/atom
+sudo apt-get update
+sudo apt-get install atom</code></pre></div>
 
-<h2 id="bibliography-management">Bibliography Management</h2>
+<p>That’s it! Atom is installed and you can start programming! So easy.</p>
 
-<p>If you tend to use the same references often, you can create one large bibliography file and store it in the file tree so that you don’t have to move it from place to place.  I have had a lot of trouble getting my bibliography well placed, so I’ve come up with a bit of a workaround.  I place my .bib file in any some directory (for me it is called “Writing”) and then reference this file in my latex documents using the bibliography command. You simply use </p>
+<h2 id="using-atom">Using Atom</h2>
+<p>Now that you have Atom installed, what features of Atom are most useful for Python programming, R, etc.?  </p>
 
-<div class="highlight"><pre><code class="language-latex" data-lang="latex"><span class="k">\bibliography</span><span class="nb">{</span>/path/to/bibliography<span class="nb">}</span></code></pre></div>
-
-<p>instead of just</p>
-
-<div class="highlight"><pre><code class="language-latex" data-lang="latex"><span class="k">\bibliography</span><span class="nb">{}</span></code></pre></div>
-
+<p><img src="tyler-abbot.github.io/images/atom_screen_1.png" alt="atom_screen_1" /></p>
 
 				<hr />
 				<footer class="page-footer">
@@ -214,12 +219,12 @@
 	<p class="author-bio"></p>
 </div><!-- ./author-content -->
 					<div class="inline-btn">
-	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=01%20-%20Packages.&amp;url=/programming/packages/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
-	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=/programming/packages/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
-	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=/programming/packages/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=04%20-%20Text%20Editors&amp;url=/programming/text-editors/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=/programming/text-editors/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=/programming/text-editors/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
 </div><!-- /.share-this -->
 					<div class="page-meta">
-	<p>Updated <time datetime="2015-04-12T14:52:06Z" itemprop="datePublished">April 12, 2015</time></p>
+	<p>Updated <time datetime="2015-05-10T10:20:57Z" itemprop="datePublished">May 10, 2015</time></p>
 </div><!-- /.page-meta -->
 				</footer><!-- /.footer -->
 				<aside>
