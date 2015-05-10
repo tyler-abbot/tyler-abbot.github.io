@@ -171,6 +171,8 @@
   <li><a href="#why-this-post-is-so-one-sided">Why This Post Is So One Sided</a></li>
   <li><a href="#installing-atom">Installing Atom</a></li>
   <li><a href="#using-atom">Using Atom</a></li>
+  <li><a href="#sweet-packages">Sweet Packages</a></li>
+  <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 
 </nav>
@@ -193,18 +195,40 @@
 <h2 id="installing-atom">Installing Atom</h2>
 <p>The first thing you should do is head over to the <a href="https://atom.io/docs" target="blank"><strong>Atom Documentation.</strong></a>  You can follow the “Getting Started” link, where you’ll learn about Atom and then how to install Atom on Apple, Windows, Debian, or Redhat, all in about 5 minutes.</p>
 
-<p>If you are using Ubuntu, life used to be terrible and you would have to build Atom from scratch.  However, <a href="http://www.webupd8.org/2014/05/install-atom-text-editor-in-ubuntu-via-ppa.html" target="blank"><strong>Andrew at webupd8.org has created a repository so you can install Atom super fast!</strong></a>  To install atom, simply pop open a terminal (by typing <code>ctrl + alt + t</code>) and then type the following</p>
+<div class="notice-info">
+    <h5>Watch out!</h5> Don't make the same mistake as I did and install the webupd8 version.  You will not have the correct path and installing package will not work properly.  Follow these steps for Ubuntu.
+</div>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo add-apt-repository ppa:webupd8team/atom
-sudo apt-get update
-sudo apt-get install atom</code></pre></div>
+<p>If you are using Ubuntu, life used to be terrible and you would have to build Atom from scratch.  However, you can now download the debian version and install Atom in a snap.  To install atom, first download the debian file from the <a href="http://atom.io" target="blank"><strong>Atom home page</strong></a>.  Then simply pop open a terminal (by typing <code>ctrl + alt + t</code>) and then type the following</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd </span>Downloads
+sudo dpkg --install atom-amd64.deb</code></pre></div>
 
 <p>That’s it! Atom is installed and you can start programming! So easy.</p>
 
 <h2 id="using-atom">Using Atom</h2>
-<p>Now that you have Atom installed, what features of Atom are most useful for Python programming, R, etc.?  </p>
+<p>Now that you have Atom installed, what features of Atom are most useful for Python programming, R, etc.?  Well, I installed Atom this morning to write this post and I am already in love with it.  Seriously, I have been using it for an hour and this is what my screen looks like:</p>
 
 <p><img src="http://tyler-abbot.github.io/images/atom_screen_1.png" alt="atom_screen_1" /></p>
+
+<p>I can edit in multiple languages in different panes, there is a file tree that I can use to navigate to new files, and the default color-scheme and syntax highlighting are great.  That being said, the fact that Atom is open source and modular means that there are a ton of cool packages you can download.  I’m going to try some out and describe them here, but there are many more so have fun and get your set-up just how you want it!</p>
+
+<h2 id="sweet-packages">Sweet Packages</h2>
+<p>First of all, one of the great things about Atom is its ease of use.  You can type <code>cntrl+shift+p</code> to get a search bar, from which you can simply search for the packages you want, or settings or whatever else you are interested in.</p>
+
+<ul>
+  <li><a href="https://github.com/AtomLinter/Linter" target="blank"><strong>Linter.</strong></a>  This package is a great idea, indicating errors inline, while you type.  You can install different packages for different languages.  However, I’m personally having some troubles with the <code>$PATH</code> variable, so I’ll update this if I can ever get it working.  <strong>UPDATE:</strong> In Ubuntu, you need to install flake8, not only as a package, but as an executable.  Run the following in the terminal then use the output to update the executable dir in the settings of linter-flake8 in Atom.  That should do it!</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install python-flake8
+which flake8</code></pre></div>
+
+<ul>
+  <li><a href="https://atom.io/packages/ask-stack" target="blank"><strong>Ask-stack.</strong></a> Oh. My. Goodness.  This package will make your life wonderful if you are new to programming.  It allows you to seach Stack Exchange for answers to questions directly in Atom.  Personally, when I first started using Python I spent half my time on Stack Exchange trying to figure out how to do things.  I haven’t used this package much, so I don’t know much about its interface, but I’m sure I’ll be using it in the future.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>I hope you enjoy Atom, but if you want to be a cool kid and suffer through years of learning a new program, go check out Vim, Emacs, or any of the other text editors out there.  Overall, it’s probably best to at least be able to talk shop about them and lament your struggles with people… although that makes it sound like my social circle is pretty limited…</p>
 
 				<hr />
 				<footer class="page-footer">

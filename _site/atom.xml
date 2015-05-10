@@ -7,7 +7,7 @@
   <subtitle>My personal website</subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="/" rel="alternate" type="text/html"/>
-  <updated>2015-05-10T11:29:24+02:00</updated>
+  <updated>2015-05-10T13:24:46+02:00</updated>
   <id>/</id>
   <author>
     <name></name>
@@ -33,6 +33,8 @@
   &lt;li&gt;&lt;a href=&quot;#why-this-post-is-so-one-sided&quot;&gt;Why This Post Is So One Sided&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#installing-atom&quot;&gt;Installing Atom&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#using-atom&quot;&gt;Using Atom&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#sweet-packages&quot;&gt;Sweet Packages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/nav&gt;
@@ -55,18 +57,40 @@
 &lt;h2 id=&quot;installing-atom&quot;&gt;Installing Atom&lt;/h2&gt;
 &lt;p&gt;The first thing you should do is head over to the &lt;a href=&quot;https://atom.io/docs&quot; target=&quot;blank&quot;&gt;&lt;strong&gt;Atom Documentation.&lt;/strong&gt;&lt;/a&gt;  You can follow the “Getting Started” link, where you’ll learn about Atom and then how to install Atom on Apple, Windows, Debian, or Redhat, all in about 5 minutes.&lt;/p&gt;
 
-&lt;p&gt;If you are using Ubuntu, life used to be terrible and you would have to build Atom from scratch.  However, &lt;a href=&quot;http://www.webupd8.org/2014/05/install-atom-text-editor-in-ubuntu-via-ppa.html&quot; target=&quot;blank&quot;&gt;&lt;strong&gt;Andrew at webupd8.org has created a repository so you can install Atom super fast!&lt;/strong&gt;&lt;/a&gt;  To install atom, simply pop open a terminal (by typing &lt;code&gt;ctrl + alt + t&lt;/code&gt;) and then type the following&lt;/p&gt;
+&lt;div class=&quot;notice-info&quot;&gt;
+    &lt;h5&gt;Watch out!&lt;/h5&gt; Don't make the same mistake as I did and install the webupd8 version.  You will not have the correct path and installing package will not work properly.  Follow these steps for Ubuntu.
+&lt;/div&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo add-apt-repository ppa:webupd8team/atom
-sudo apt-get update
-sudo apt-get install atom&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you are using Ubuntu, life used to be terrible and you would have to build Atom from scratch.  However, you can now download the debian version and install Atom in a snap.  To install atom, first download the debian file from the &lt;a href=&quot;http://atom.io&quot; target=&quot;blank&quot;&gt;&lt;strong&gt;Atom home page&lt;/strong&gt;&lt;/a&gt;.  Then simply pop open a terminal (by typing &lt;code&gt;ctrl + alt + t&lt;/code&gt;) and then type the following&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;Downloads
+sudo dpkg --install atom-amd64.deb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;That’s it! Atom is installed and you can start programming! So easy.&lt;/p&gt;
 
 &lt;h2 id=&quot;using-atom&quot;&gt;Using Atom&lt;/h2&gt;
-&lt;p&gt;Now that you have Atom installed, what features of Atom are most useful for Python programming, R, etc.?  &lt;/p&gt;
+&lt;p&gt;Now that you have Atom installed, what features of Atom are most useful for Python programming, R, etc.?  Well, I installed Atom this morning to write this post and I am already in love with it.  Seriously, I have been using it for an hour and this is what my screen looks like:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://tyler-abbot.github.io/images/atom_screen_1.png&quot; alt=&quot;atom_screen_1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I can edit in multiple languages in different panes, there is a file tree that I can use to navigate to new files, and the default color-scheme and syntax highlighting are great.  That being said, the fact that Atom is open source and modular means that there are a ton of cool packages you can download.  I’m going to try some out and describe them here, but there are many more so have fun and get your set-up just how you want it!&lt;/p&gt;
+
+&lt;h2 id=&quot;sweet-packages&quot;&gt;Sweet Packages&lt;/h2&gt;
+&lt;p&gt;First of all, one of the great things about Atom is its ease of use.  You can type &lt;code&gt;cntrl+shift+p&lt;/code&gt; to get a search bar, from which you can simply search for the packages you want, or settings or whatever else you are interested in.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/AtomLinter/Linter&quot; target=&quot;blank&quot;&gt;&lt;strong&gt;Linter.&lt;/strong&gt;&lt;/a&gt;  This package is a great idea, indicating errors inline, while you type.  You can install different packages for different languages.  However, I’m personally having some troubles with the &lt;code&gt;$PATH&lt;/code&gt; variable, so I’ll update this if I can ever get it working.  &lt;strong&gt;UPDATE:&lt;/strong&gt; In Ubuntu, you need to install flake8, not only as a package, but as an executable.  Run the following in the terminal then use the output to update the executable dir in the settings of linter-flake8 in Atom.  That should do it!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo apt-get install python-flake8
+which flake8&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://atom.io/packages/ask-stack&quot; target=&quot;blank&quot;&gt;&lt;strong&gt;Ask-stack.&lt;/strong&gt;&lt;/a&gt; Oh. My. Goodness.  This package will make your life wonderful if you are new to programming.  It allows you to seach Stack Exchange for answers to questions directly in Atom.  Personally, when I first started using Python I spent half my time on Stack Exchange trying to figure out how to do things.  I haven’t used this package much, so I don’t know much about its interface, but I’m sure I’ll be using it in the future.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I hope you enjoy Atom, but if you want to be a cool kid and suffer through years of learning a new program, go check out Vim, Emacs, or any of the other text editors out there.  Overall, it’s probably best to at least be able to talk shop about them and lament your struggles with people… although that makes it sound like my social circle is pretty limited…&lt;/p&gt;
 
     </content>
   </entry>
