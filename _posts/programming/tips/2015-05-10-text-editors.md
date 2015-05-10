@@ -47,4 +47,4 @@ Using Atom
 ---------------
 Now that you have Atom installed, what features of Atom are most useful for Python programming, R, etc.?  
 
-![atom_screen_1](tyler-abbot.github.io/images/atom_screen_1.png)
+![atom_screen_1](http://tyler-abbot.github.io/images/atom_screen_1.png)
