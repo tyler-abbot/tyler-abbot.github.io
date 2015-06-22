@@ -1,6 +1,7 @@
 ---
 layout: article
 title: "01 - Why Python? I Already Know R!"
+description: "Because all the cool kids are doing it."
 modified:
 categories: programming
 subcategories: python
@@ -44,4 +45,3 @@ Where are things heading?
 ---------------
 
 Neither one of these languages is going anywhere soon.  That being said, I think that the number of passionate programmers and statisticians working on Python is growing in comparison to R and that in the future we'll need more versatile tools.  I have spent so much time now in Python, that I don't even consider opening up R, even for statistics, unless I need to work with someone else who doesn't know Python.  That being said, I'll soon be doing som complicated econometrics, so maybe I'll dust off my R books and get back on the wagon.
-
