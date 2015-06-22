@@ -2,7 +2,7 @@
 
 title: Tyler Abbot
 description: My personal website
-logo: mandelbrot4.png # 120x120 px default image used for Twitter summary card
+logo: pipo_logo.png # 120x120 px default image used for Twitter summary card
 teaser: paper_stack.jpg # 400x250 px default teaser image used in image archive grid
 locale: "en_US"
 url: 'https://tyler-abbot.github.io'
