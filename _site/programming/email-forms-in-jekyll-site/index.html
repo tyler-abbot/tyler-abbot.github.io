@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>05 - Email Forms in Jekyll Site • Tyler Abbot</title>
+    
+    <meta name="keywords" content="">
+    
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="05 - Email Forms in Jekyll Site">
+	
+	
+	
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="/images/mandelbrot4.png">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="05 - Email Forms in Jekyll Site">
+	
+	<meta property="og:url" content="/programming/email-forms-in-jekyll-site/">
+	<meta property="og:site_name" content="Tyler Abbot">
+
+    <link rel="canonical" href="/programming/email-forms-in-jekyll-site/">
+
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Tyler Abbot Atom Feed">
+
+    <link href="/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+    
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="/js/vendor/html5shiv.min.js"></script>
+      <script src="/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="/" class="site-title">Tyler Abbot</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">Tyler Abbot</a></li>
+	
+    
+        
+    
+    <li><a href="/about/" >About</a></li>
+  
+    
+        
+    
+    <li><a href="/cv/" >CV</a></li>
+  
+    
+        
+    
+    <li><a href="/teaching/" >Teaching</a></li>
+  
+    
+        
+    
+    <li><a href="/research/" >Research</a></li>
+  
+    
+        
+    
+    <li><a href="/programming/" >Programming</a></li>
+  
+    
+        
+    
+    <li><a href="/links/" >Links</a></li>
+  
+</ul>
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+<!--    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>Tyler Abbot <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="/about/">
+        <img src="/images/papers1.png" alt="teaser" class="teaser">
+        <div class="title">About</div>
+        <p class="excerpt">A bit about me.</p>
+      </a>
+    </li><li>
+      <a href="/cv/">
+        <img src="/images/papers2.png" alt="teaser" class="teaser">
+        <div class="title">CV</div>
+        <p class="excerpt">My CV.</p>
+      </a>
+    </li><li>
+      <a href="/teaching/">
+        <img src="/images/papers3.png" alt="teaser" class="teaser">
+        <div class="title">Teaching</div>
+        <p class="excerpt">Courses I've taught or helped to teach.</p>
+      </a>
+    </li><li>
+      <a href="/research/">
+        <img src="/images/papers4.png" alt="teaser" class="teaser">
+        <div class="title">Research</div>
+        <p class="excerpt">Things I study.</p>
+      </a>
+    </li><li>
+      <a href="/programming/">
+        <img src="/images/papers5.png" alt="teaser" class="teaser">
+        <div class="title">Programming</div>
+        <p class="excerpt">Programming I do.</p>
+      </a>
+    </li><li>
+      <a href="/links/">
+        <img src="/images/papers5.png" alt="teaser" class="teaser">
+        <div class="title">Links</div>
+        <p class="excerpt">Sites I like.</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+ -->
+
+    <div id="page-wrapper">
+      <div id="main" role="main">
+	<article class="wrap" itemscope itemtype="http://schema.org/Article">
+		
+		
+  <nav class="breadcrumbs">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="" itemprop="url">
+        <span itemprop="title">Home</span>
+      </a> › 
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="/programming/" itemprop="url">
+        <span itemprop="title">programming</span>
+      </a> › 
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="/programming/tips.html" itemprop="url">
+        <span itemprop="title">tips</span>
+      </a>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+    <!--  <a href="/programming/" itemprop="url"> -->
+
+		<div class="page-title">
+			<h1>05 - Email Forms in Jekyll Site</h1>
+		</div>
+		<div class="inner-wrap">
+			<div id="content" class="page-content" itemprop="articleBody">
+				<nav class="toc">
+<ul id="markdown-toc">
+  <li><a href="#why-doesnt-it-work">Why doesn’t it work?!</a></li>
+  <li><a href="#the-original-form-and-a-bit-about-php-mail">The original form and a bit about PHP mail()</a></li>
+  <li><a href="#sendgrid-and-the-new-contact-form">SendGrid and the new contact form</a></li>
+</ul>
+
+</nav>
+
+<div class="notice">
+    <p><h5>Disclaimer:</h5></p>
+    <p>This post is incomplete and is left here as a cry for help!  I have struggled for days with this.  If anyone stumbles upon this post and has advice on how to incorporate a contact form into markdown, I would greatly appreciated it...</p>
+</div>
+
+<p>I’ve recently been working on a project to start a non-profit and wanted to build a website.  I used the <a href="http://jekyllthemes.org/themes/agency/" target="_blank_">Agency theme</a>.  You can check out my finished product <a href="http://www.allochory.org" target="_blank_">here</a>.  Although a great theme and really easy to get set-up, I ran into trouble with the e-mail form.  I contacted the theme creator, <a href="https://github.com/y7kim" target="_blank_">Rick Kim</a>, and he imparted some knowledge about static websites that I would like to share with you, as well as aggregate some useful information for adding an e-mail form to a static website.</p>
+
+<h2 id="why-doesnt-it-work">Why doesn’t it work?!</h2>
+<p>So I built this little one page site off the theme in an afternoon and was very proud of myself, but then couldn’t get the email form to work.  After spending a day reading about it and stumbling around the internet, I heard back from Rick and he explained something about static websites.  Because a static html website is just a set of files, it can’t generate an e-mail from a contact form.  You need to either include a third party contact form or use an e-mail service.  I went with the latter choice, using <a href="https://sendgrid.com" target="_blank_">SendGrid</a>.  What follows is a bit about how I hotwired the standard form to make my e-mail form work.</p>
+
+<h2 id="the-original-form-and-a-bit-about-php-mail">The original form and a bit about PHP mail()</h2>
+<p>The form in the original Agency theme uses the PHP mail() function.  This function is apparently notorious for being difficult to debug.  A “false” output could be anything from a bad input value to your e-mail DNS being improperly configured.  To add to the problem, the GitHub page cannot even run the function!  Enter a third party.</p>
+
+<h2 id="sendgrid-and-the-new-contact-form">SendGrid and the new contact form</h2>
+<p>SendGrid is a transactional and marketing email service.  The company was designed by developers to better serve companies e-mail needs.  What we need is their transactional service, which takes on the responsibility of running an e-mail server for you and provides analytics about traffic.</p>
+
+				<hr />
+				<footer class="page-footer">
+					
+
+
+<div class="author-image">
+	<img src="/images/bio-photo2.jpg" alt="">
+</div><!-- ./author-image -->
+<div class="author-content">
+	<h3 class="author-name" >Written by <span itemprop="author"></span></h3>
+	<p class="author-bio"></p>
+</div><!-- ./author-content -->
+					<div class="inline-btn">
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=05%20-%20Email%20Forms%20in%20Jekyll%20Site&amp;url=/programming/email-forms-in-jekyll-site/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=/programming/email-forms-in-jekyll-site/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=/programming/email-forms-in-jekyll-site/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+</div><!-- /.share-this -->
+					<div class="page-meta">
+	<p>Updated <time datetime="2015-05-31T14:53:20Z" itemprop="datePublished">May 31, 2015</time></p>
+</div><!-- /.page-meta -->
+				</footer><!-- /.footer -->
+				<aside>
+					
+				</aside>
+			</div><!-- /.content -->
+		</div><!-- /.inner-wrap -->
+		
+	</article><!-- ./wrap -->
+</div><!-- /#main -->
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+        
+      
+			<li><a href="" ></a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2015 <a href="">Tyler Abbot</a> powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/" rel="nofollow">Skinny Bones</a>.</p>
+</footer>
+    </div>
+
+    <script src="/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/js/main.js"></script>
+
+  </body>
+
+</html>

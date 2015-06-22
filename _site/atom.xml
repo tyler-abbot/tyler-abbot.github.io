@@ -7,7 +7,7 @@
   <subtitle>My personal website</subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="/" rel="alternate" type="text/html"/>
-  <updated>2015-05-10T13:24:46+02:00</updated>
+  <updated>2015-06-22T12:40:07+02:00</updated>
   <id>/</id>
   <author>
     <name></name>
@@ -15,6 +15,177 @@
     
   </author>
 
+  
+  <entry>
+    <title>02 - Posting to Websites in Python</title>
+    <link href="/programming/request_package/"/>
+    <updated>2015-06-22T10:27:01+02:00</updated>
+    <id>/programming/request_package</id>
+    <author>
+      <name></name>
+      <uri>/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;nav class=&quot;toc&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#different-methods-to-do-the-same-things&quot;&gt;Different Methods to Do the Same things&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#requests&quot;&gt;Requests&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#what-we-are-going-to-do&quot;&gt;What We Are Going to Do&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-initial-get&quot;&gt;The Initial Get&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/nav&gt;
+
+&lt;p&gt;For the last couple weeks I’ve been doing some house keeping before going on vacation.  I’m working on a paper using PSID panel data and want to do my work in Python.  The problem is that the PSID data comes in SAS format, with a .txt ASCII file containing the data and a .sas (or .do or .spss) file containing instructions on how to interpret the file.  In order to deal with these files, &lt;a href=&quot;https://floswald.github.io/&quot; target=&quot;_blank_&quot;&gt;Florian Oswald&lt;/a&gt; has written an R package to download the data and build a panel.  I’ve been transcribing the package into Python and struggled for several days with posting to the online form in order to login and download data.  This post is about how to do that and what I found to be the easiest solution.&lt;/p&gt;
+
+&lt;h2 id=&quot;different-methods-to-do-the-same-things&quot;&gt;Different Methods to Do the Same things&lt;/h2&gt;
+&lt;p&gt;The standard for connecting to a website from Python, R, etc., is cURL, a free software library for transferring data through http.  The problem is that in Python the libcurl wrapper is not at all pythonic.  Unless you are familiar with using http you will struggle, as I did, for days trying to get the functions to work.  As usual, though, there is a module to fix that!&lt;/p&gt;
+
+&lt;p&gt;The slogan for the &lt;a href=&quot;http://docs.python-requests.org/en/latest/&quot; target=&quot;_blank_&quot;&gt;Requests&lt;/a&gt; module is “HTTP for Humans”.  Ah, finally something I can understand!  The module does all of the heavy lifting for you and even anticipates some of your needs.  I encourage you, if you are going to be using it at all often, to get familiar with what the package can do by perusing the read me.  This will also give you a chance to learn about http if you are unfamiliar (as I was).&lt;/p&gt;
+
+&lt;h2 id=&quot;requests&quot;&gt;Requests&lt;/h2&gt;
+&lt;p&gt;So to get started, let’s see how to make a simple request (this example is taken from the Requests website).  First, import requests (given that you’ve already installed the module):&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;requests&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Requests is object oriented, so you post requests to a webpage and the generated object contains all of the response information you might need.  For example, run&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;https://api.github.com/events&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The returned &lt;code&gt;r&lt;/code&gt; object contains a bunch of methods you can use to retrieve information from the returned html.  For instance &lt;code&gt;r.url&lt;/code&gt; will return the associated &lt;code&gt;url&lt;/code&gt;, while &lt;code&gt;r.text&lt;/code&gt; will return the entire &lt;code&gt;html&lt;/code&gt; webpage.  There a ton of methods that are very useful, so I suggest you get familiar by reading the user guide.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-we-are-going-to-do&quot;&gt;What We Are Going to Do&lt;/h2&gt;
+&lt;p&gt;So, in order to save time and space I’m going to combine two topics here.  We’ll take as a working example posting to the PSID website to login.  If you want to follow along, I suggest you register for an account &lt;a href=&quot;http://simba.isr.umich.edu/U/Login.aspx&quot; target=&quot;_blank_&quot;&gt;here&lt;/a&gt;.  The PSID Data Center is what is known as an ASP web application.  That really just refers to the architecture on which the site is built, but it has implicaitons for posting a login to the page.  ASP sites often have different requirements for form fields, or the information they need in order to allow you to login.  Because of this there are two things that you will need to do: scrape and post.&lt;/p&gt;
+
+&lt;p&gt;First of all, you must scrape the page.  What does this mean?  To better explain, follow these steps:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First of all, navigate to the PSID login page linked above.&lt;/li&gt;
+  &lt;li&gt;Right click on the login field (or anywhere for that matter) and click “Inspect Element”.&lt;/li&gt;
+  &lt;li&gt;Navigate to the network tab and click on the clear button (similar to a &lt;a href=&quot;https://www.google.fr/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=do%20not%20sign&quot; target=&quot;_blank_&quot;&gt;“Do Not…”&lt;/a&gt; symbol in the states).&lt;/li&gt;
+  &lt;li&gt;Now login using your username and password.  In the inspect element field you should see a bunch of information appear.  If not, start over because you must have done something wrong.  My screen looks like this:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/post_screen.png&quot; alt=&quot;Screen&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;One of the elements (probably the first) will be &lt;code&gt;Login.aspx&lt;/code&gt;.  Click on this and it will pop up a frame with several tabs.  Select &lt;code&gt;Headers&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Scroll down to &lt;code&gt;Form Data&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You made it!  What you are looking at is a list of the required fields to post a login form on the PSID website.  In order for your program to login you must provide all of this information.  When writing a program to post a form, this is the first thing you should do to find out what fields you need to know.&lt;/p&gt;
+
+&lt;p&gt;So, in order to login we’ll follow the following steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Post a &lt;code&gt;request&lt;/code&gt; to the page to retrieve the &lt;code&gt;html&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;“Scrape” the page to find the required form field values.&lt;/li&gt;
+  &lt;li&gt;Re-post a &lt;code&gt;request&lt;/code&gt; to login.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;But wait, what is scraping!?  Scraping refers to searching a webpage for key terms.  This is how Google builds its search results (or one of the many steps in what they do).  We don’t actually have to do all the work to do this, as &lt;a href=&quot;http://www.crummy.com/software/BeautifulSoup/&quot; target=&quot;_blank_&quot;&gt;Beautiful Soup&lt;/a&gt; is going to do all of it for us.  So let’s get down to business.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-initial-get&quot;&gt;The Initial Get&lt;/h2&gt;
+&lt;p&gt;Since we’ve already imported requests, the first thing we’ll do is create a &lt;code&gt;requests&lt;/code&gt; session object and define the login url:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;URL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;http://simba.isr.umich.edu/u/login.aspx&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now we want to retrieve the &lt;code&gt;html&lt;/code&gt; for the page:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Next, use the Beautiful Soup package to scrape the page and define a &lt;code&gt;params&lt;/code&gt; dictionary object that contains all of your form variables:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#Import Beautiful Soup&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;bs4&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BeautifulSoup&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#Use the beautifulsoup package to scrape for form variables&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;soup&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BeautifulSoup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;viewstate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;soup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;input&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                         &lt;span class=&quot;s&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;__VIEWSTATE&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;radscript&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;soup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;input&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                         &lt;span class=&quot;s&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;RadScriptManager1_TSM&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;viewstategenerator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;soup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;input&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                  &lt;span class=&quot;s&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;__VIEWSTATEGENERATOR&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;eventvalidation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;soup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;input&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                               &lt;span class=&quot;s&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;__EVENTVALIDATION&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;radscript&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;soup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;input&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                         &lt;span class=&quot;s&quot;&gt;&amp;quot;RadScriptManager1_TSM&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#Gather form data into a single dictionary&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;RadScriptManager1_TSM&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radscript&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;value&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&amp;#39;__EVENTTARGET&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&amp;#39; __EVENTARGUMENT&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&amp;#39;__VIEWSTATE&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;viewstate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;value&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&amp;#39;__VIEWSTATEGENERATOR&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;viewstategenerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;value&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&amp;#39;__EVENTVALIDATION&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eventvalidation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;value&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&amp;#39;ctl00$ContentPlaceHolder1$Login1$UserName&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;USERNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&amp;#39;ctl00$ContentPlaceHolder1$Login1$Password&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PASSWORD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&amp;#39;ctl00$ContentPlaceHolder1$Login1$LoginButton&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;Log In&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&amp;#39;ctl00_RadWindowManager1_ClientState&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You’ll want to replace &lt;code&gt;USERNAME&lt;/code&gt; and &lt;code&gt;PASSWORD&lt;/code&gt; with your own.  Notice that I left some of the form fields blank.  This is because they are blank whenever I submit this form, but I kept them here in case it is different for others.&lt;/p&gt;
+
+&lt;p&gt;Now, post the form:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Referer&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;http://psidonline.isr.umich.edu/&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here the &lt;code&gt;headers={&quot;Referer&quot;: &quot;http://psidonline.isr.umich.edu/&quot;}&lt;/code&gt; tells the website that you came from within the site and are not just posting the form directly (which is actually what you are doing, but the site doesn’t seem to like that…).  Now the reason for using the session object should become clear.  &lt;code&gt;c&lt;/code&gt; now contains a cookie that you can use to move within the site.  For example, let’s say you wanted to download a the zipped family interview files from 1968.  Then you could simply run the following line:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;http://simba.isr.umich.edu/Zips/GetFile.aspx?file=1056&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+             &lt;span class=&quot;n&quot;&gt;allow_redirects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now &lt;code&gt;data&lt;/code&gt; contains a binary zip file with the data you requested.  You can use the ZipFile module to unzip and save this, but that’s for another post!&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Overall, posting to webpages is not something that I or other economists need to do very often.  However, when we do need to do it it is because we need data.  These data files can sometimes be large or there could be many of them.  Using the &lt;code&gt;requests&lt;/code&gt; package to automate logging into a database can save us tons of time, as we can let the computer do all of the work for us!  In any case, if you have any comments or questions, please let me know!&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>05 - Email Forms in Jekyll Site</title>
+    <link href="/programming/email-forms-in-jekyll-site/"/>
+    <updated>2015-05-31T14:53:20+02:00</updated>
+    <id>/programming/email-forms-in-jekyll-site</id>
+    <author>
+      <name></name>
+      <uri>/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;nav class=&quot;toc&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#why-doesnt-it-work&quot;&gt;Why doesn’t it work?!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-original-form-and-a-bit-about-php-mail&quot;&gt;The original form and a bit about PHP mail()&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#sendgrid-and-the-new-contact-form&quot;&gt;SendGrid and the new contact form&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/nav&gt;
+
+&lt;div class=&quot;notice&quot;&gt;
+    &lt;p&gt;&lt;h5&gt;Disclaimer:&lt;/h5&gt;&lt;/p&gt;
+    &lt;p&gt;This post is incomplete and is left here as a cry for help!  I have struggled for days with this.  If anyone stumbles upon this post and has advice on how to incorporate a contact form into markdown, I would greatly appreciated it...&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I’ve recently been working on a project to start a non-profit and wanted to build a website.  I used the &lt;a href=&quot;http://jekyllthemes.org/themes/agency/&quot; target=&quot;_blank_&quot;&gt;Agency theme&lt;/a&gt;.  You can check out my finished product &lt;a href=&quot;http://www.allochory.org&quot; target=&quot;_blank_&quot;&gt;here&lt;/a&gt;.  Although a great theme and really easy to get set-up, I ran into trouble with the e-mail form.  I contacted the theme creator, &lt;a href=&quot;https://github.com/y7kim&quot; target=&quot;_blank_&quot;&gt;Rick Kim&lt;/a&gt;, and he imparted some knowledge about static websites that I would like to share with you, as well as aggregate some useful information for adding an e-mail form to a static website.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-doesnt-it-work&quot;&gt;Why doesn’t it work?!&lt;/h2&gt;
+&lt;p&gt;So I built this little one page site off the theme in an afternoon and was very proud of myself, but then couldn’t get the email form to work.  After spending a day reading about it and stumbling around the internet, I heard back from Rick and he explained something about static websites.  Because a static html website is just a set of files, it can’t generate an e-mail from a contact form.  You need to either include a third party contact form or use an e-mail service.  I went with the latter choice, using &lt;a href=&quot;https://sendgrid.com&quot; target=&quot;_blank_&quot;&gt;SendGrid&lt;/a&gt;.  What follows is a bit about how I hotwired the standard form to make my e-mail form work.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-original-form-and-a-bit-about-php-mail&quot;&gt;The original form and a bit about PHP mail()&lt;/h2&gt;
+&lt;p&gt;The form in the original Agency theme uses the PHP mail() function.  This function is apparently notorious for being difficult to debug.  A “false” output could be anything from a bad input value to your e-mail DNS being improperly configured.  To add to the problem, the GitHub page cannot even run the function!  Enter a third party.&lt;/p&gt;
+
+&lt;h2 id=&quot;sendgrid-and-the-new-contact-form&quot;&gt;SendGrid and the new contact form&lt;/h2&gt;
+&lt;p&gt;SendGrid is a transactional and marketing email service.  The company was designed by developers to better serve companies e-mail needs.  What we need is their transactional service, which takes on the responsibility of running an e-mail server for you and provides analytics about traffic.&lt;/p&gt;
+
+    </content>
+  </entry>
   
   <entry>
     <title>04 - Text Editors</title>

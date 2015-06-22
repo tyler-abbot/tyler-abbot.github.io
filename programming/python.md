@@ -1,7 +1,7 @@
 ---
 layout: archive
 title: ""
-date: 
+date:
 modified:
 excerpt:
 image:
@@ -12,7 +12,7 @@ ads: false
 ---
 
 <div class="tiles">
-{% for post in site.categories['programming']%}
+{% for post in site.categories['programming'] reversed %}
     {% if post.subcategories == 'python'%}
 	    {% include post-grid.html %}
     {% endif %}
