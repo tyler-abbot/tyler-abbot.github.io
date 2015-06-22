@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "02 - Posting to Websites in Python"
-description: "How to login and download files from a website using Python."
+description: "How to login and download files from a website using Python.  This post covers using the requests module to open a session, Beautiful Soup to scrape for form variables, and then how to post a form and download a file."
 modified:
 categories: programming
 subcategories: python
