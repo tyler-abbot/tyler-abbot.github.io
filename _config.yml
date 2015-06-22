@@ -6,6 +6,7 @@ logo: mandelbrot4.png # 120x120 px default image used for Twitter summary card
 teaser: paper_stack.jpg # 400x250 px default teaser image used in image archive grid
 locale:
 #url:
+icon: mandelbrot4.png #The image to be used for facebook posts. Always the same
 
 # Jekyll configuration
 
