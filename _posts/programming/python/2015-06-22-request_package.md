@@ -1,6 +1,7 @@
 ---
 layout: article
 title: "02 - Posting to Websites in Python"
+description: "How to login and download files from a website using Python."
 modified:
 categories: programming
 subcategories: python
