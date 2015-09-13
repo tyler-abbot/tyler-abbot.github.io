@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>03 - A Scrapy Webspider • Tyler Abbot</title>
+    
+    <meta name="keywords" content="">
+    
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="03 - A Scrapy Webspider">
+	
+	
+	
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="/images/mandelbrot4.png">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="03 - A Scrapy Webspider">
+	<meta property="og:description" content="How to write and use a Scrapy web spider, as well as an example that might be useful to a social scientist.">
+	<meta property="og:url" content="/programming/a-scrapy-webspider/">
+	<meta property="og:site_name" content="Tyler Abbot">
+	<meta property="og:image" content="/images/pipo_logo.png">
+
+
+    <link rel="canonical" href="/programming/a-scrapy-webspider/">
+
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Tyler Abbot Atom Feed">
+
+    <link href="/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+    
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="/js/vendor/html5shiv.min.js"></script>
+      <script src="/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="/" class="site-title">Tyler Abbot</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">Tyler Abbot</a></li>
+	
+    
+        
+    
+    <li><a href="/about/" >About</a></li>
+  
+    
+        
+    
+    <li><a href="/cv/" >CV</a></li>
+  
+    
+        
+    
+    <li><a href="/teaching/" >Teaching</a></li>
+  
+    
+        
+    
+    <li><a href="/research/" >Research</a></li>
+  
+    
+        
+    
+    <li><a href="/programming/" >Programming</a></li>
+  
+    
+        
+    
+    <li><a href="/links/" >Links</a></li>
+  
+</ul>
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+<!--    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>Tyler Abbot <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="/about/">
+        <img src="/images/papers1.png" alt="teaser" class="teaser">
+        <div class="title">About</div>
+        <p class="excerpt">A bit about me.</p>
+      </a>
+    </li><li>
+      <a href="/cv/">
+        <img src="/images/papers2.png" alt="teaser" class="teaser">
+        <div class="title">CV</div>
+        <p class="excerpt">My CV.</p>
+      </a>
+    </li><li>
+      <a href="/teaching/">
+        <img src="/images/papers3.png" alt="teaser" class="teaser">
+        <div class="title">Teaching</div>
+        <p class="excerpt">Courses I've taught or helped to teach.</p>
+      </a>
+    </li><li>
+      <a href="/research/">
+        <img src="/images/papers4.png" alt="teaser" class="teaser">
+        <div class="title">Research</div>
+        <p class="excerpt">Things I study.</p>
+      </a>
+    </li><li>
+      <a href="/programming/">
+        <img src="/images/papers5.png" alt="teaser" class="teaser">
+        <div class="title">Programming</div>
+        <p class="excerpt">Programming I do.</p>
+      </a>
+    </li><li>
+      <a href="/links/">
+        <img src="/images/papers5.png" alt="teaser" class="teaser">
+        <div class="title">Links</div>
+        <p class="excerpt">Sites I like.</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+ -->
+
+    <div id="page-wrapper">
+      <div id="main" role="main">
+	<article class="wrap" itemscope itemtype="http://schema.org/Article">
+		
+		
+  <nav class="breadcrumbs">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="" itemprop="url">
+        <span itemprop="title">Home</span>
+      </a> › 
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="/programming/" itemprop="url">
+        <span itemprop="title">programming</span>
+      </a> › 
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="/programming/python.html" itemprop="url">
+        <span itemprop="title">python</span>
+      </a>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+    <!--  <a href="/programming/" itemprop="url"> -->
+
+		<div class="page-title">
+			<h1>03 - A Scrapy Webspider</h1>
+		</div>
+		<div class="inner-wrap">
+			<div id="content" class="page-content" itemprop="articleBody">
+				<nav class="toc">
+<ul id="markdown-toc">
+  <li><a href="#creating-a-project">Creating a Project</a></li>
+  <li><a href="#defining-items-to-extract">Defining Items to Extract</a></li>
+  <li><a href="#writing-a-spider">Writing a spider</a></li>
+  <li><a href="#writing-a-pipeline">Writing a Pipeline</a></li>
+  <li><a href="#conclusion">Conclusion</a></li>
+</ul>
+
+</nav>
+
+<p>How to use Scrapy.  This is basically a summary of the <a href="http://doc.scrapy.org/en/1.0/intro/tutorial.html" target="_blank_">Scrapy tutorial</a>.  As an example, we’ll make a web crawler to scrape the <a href="econ.sciences-po.fr" target="_blank_">Sciences Po Economics Department website</a> for seminar information.</p>
+
+<h2 id="creating-a-project">Creating a Project</h2>
+<p>Scrapy automatically generates a directory containing a set of files you will need.  Simply open a terminal, navigate to the directory where you’d like to store your crawler, and type</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">scrapy startproject PiPoCrawl</code></pre></div>
+
+<p>That’s it!  You now have a full Scrapy project.  The project folder contains several files that we will need to use.  The <code>items.py</code> file is where you define what you would like to find.  The <code>pipelines.py</code> is for managing output.  The <code>settings.py</code> file is pretty self explanatory and the <code>spiders</code> folder is where you will store all of your creepy crawlies.</p>
+
+<h2 id="defining-items-to-extract">Defining Items to Extract</h2>
+<p>Items work like Python dictionaries.  It is actually possible to use dictionaries, but Scrapy prefers Items, as they have apparently optimized their program for these.  You define the Item class yourself, specifying what information you would like to have output from the spider.  The Scrapy Item class must be defined withing the <code>items.py</code> file.  So edit that file.  For now, our <code>items.py</code> file looks like the following:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">scrapy</span>
+
+<span class="k">class</span> <span class="nc">PipocrawlItem</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span></code></pre></div>
+
+<p>Note that I’m ommitting the comments that are automatically generated by Scrapy, but you don’t have to (this may seem obvious, but keep in mind that not everyone is a programming guru like yourself…).  </p>
+
+<h2 id="writing-a-spider">Writing a spider</h2>
+<p>Although I suffer from arachnophobia, we are going to check out a spider…  A spider is a python class that defines how we would like to perform our scraping.  They tell scrapy how to crawl (eg follow links), how to extract the data, etc.</p>
+
+<p>I’ve created a spider called <code>pipo_spider.py</code> that scrapes the home page of the Sciences Po Economics Department for seminar information.  The script looks like the following:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">from</span> <span class="nn">PiPoCrawl.items</span> <span class="kn">import</span> <span class="n">PipocrawlItem</span>
+
+
+<span class="k">class</span> <span class="nc">PipocrawlSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;pipo&quot;</span>
+    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;econ.sciences-po.fr&quot;</span><span class="p">]</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s">&quot;http://econ.sciences-po.fr/&quot;</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">events</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&quot;//div[@class=&#39;my_agenda&#39;]&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">seminar</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>
+            <span class="c">#NOTE: You need to include the period in the xpath expression to</span>
+            <span class="c"># make it relative.  Otherwise, you will start from the begining</span>
+            <span class="c">#NOTE: Including the text() specification in the xpath drops the</span>
+            <span class="c"># html surrounding the content</span>
+            <span class="n">item</span> <span class="o">=</span> <span class="n">PipocrawlItem</span><span class="p">()</span>
+            <span class="n">item</span><span class="p">[</span><span class="s">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seminar</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&quot;.//strong/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="c">#NOTE: Notice the nested selector to get the link text</span>
+            <span class="n">item</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seminar</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&quot;.//span[@class=&#39;titre&#39;]&quot;</span><span class="p">)</span>
+            <span class="n">item</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&quot;.//a/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+            <span class="n">item</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seminar</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&quot;.//span[@class=&#39;desc&#39;]/text()&quot;</span>
+                                                <span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+            <span class="k">yield</span> <span class="n">item</span></code></pre></div>
+
+<p>Let’s look at the parts of this file individually.  First, you have to import your custom Items class, using <code>from PiPoCrawl.items import PipocrawlItem</code>.  Next, you define your spider class and give it some attributes:</p>
+
+<ul>
+  <li><code>name</code> defines the name of your spider so you can call it from the command line.</li>
+  <li><code>allowed_domains</code> defines the site within which your spider is allowed to crawl.  Here, we limit it to the Economics Department’s website.</li>
+  <li><code>start_urls</code> tels the spider some starting points, as many as you would like to provide.</li>
+</ul>
+
+<p>Now, we can define a <code>parse()</code> method within our spider class to process the webiste content.  Here you have the liberty to do as you please and I found that the most difficult step in this process was identifying what you want and how to differentiate it.  For this case, I noticed that all of the seminar entries are defined as <code>div</code> objects of a class called <code>my_agenda</code>.  Because of this, it is possible to identify all of the individual entries.  So, the first thing to do is to extract all of these entries:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">events</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&quot;//div[@class=&#39;my_agenda&#39;]&quot;</span><span class="p">)</span></code></pre></div>
+
+<p>This command calls the <code>response</code> object, containing the raw html source of the webpage, and applies an xpath selector.  What the heck is that?! <a href="http://www.w3.org/TR/xpath/" target="_blank_">XPath</a> is a “language for addressing parts of an XML document”, whatever that means.  If you would like to learn more about XPath and the syntax of these calls, refer to this <a href="http://infohost.nmt.edu/tcc/help/pubs/xslt/xpath-sect.html" target="_blank_">New Mexico Tech Reference</a>, but it is quite dense.  You might be better off just googling specific examples if you don’t do much web programming (like me!).</p>
+
+<p>In the example above, the selector looks through the html code and selects all of the instances of <code>&lt;div&gt; ... &lt;\div&gt;</code> that are of the class <code>my_agenda</code>, placing these into a SelectorsList object.  The nice thing about this object is that you can again use the <code>xpath</code> method, nesting text selection.  Anywho, next we loop over the list objects, each one representing a calendar entry.  We have the following loop:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">seminar</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">PipocrawlItem</span><span class="p">()</span>
+    <span class="n">item</span><span class="p">[</span><span class="s">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seminar</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&quot;.//strong/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+    <span class="n">item</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seminar</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&quot;.//span[@class=&#39;titre&#39;]&quot;</span><span class="p">)</span>
+    <span class="n">item</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&quot;.//a/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+    <span class="n">item</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seminar</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&quot;.//span[@class=&#39;desc&#39;]/text()&quot;</span>
+                                        <span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+    <span class="k">yield</span> <span class="n">item</span></code></pre></div>
+
+<p>For each loop, we define an instance of <code>PipocrawlItem()</code> and populate it by scraping the text.  First, take a look at the html of an entry in <code>events</code>:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&#39;agenda_4&#39;</span> <span class="na">class=</span><span class="s">&#39;my_agenda&#39;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;strong&gt;</span>21-09-2015<span class="nt">&lt;/strong&gt;</span>
+	<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&#39;titre&#39;</span> <span class="na">id=</span><span class="s">&#39;titre_4&#39;</span><span class="nt">&gt;</span> | <span class="nt">&lt;strong&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/departmental-seminar-rob-shimer-university-chicago&quot;</span><span class="nt">&gt;</span> Departmental Seminar : Rob SHIMER (University of Chicago)<span class="nt">&lt;/a&gt;&lt;/strong&gt;&lt;/span&gt;</span>
+	<span class="nt">&lt;br&gt;&lt;span</span> <span class="na">class=</span><span class="s">&#39;desc&#39;</span> <span class="na">id=</span><span class="s">&#39;texte_4&#39;</span><span class="nt">&gt;</span> Title: TBA
+
+	The next Departmental Seminar will host Georgy EGOROV (Kellogg School of Management)<span class="ni">&amp;nbsp;</span> on September 28th.
+
+	Seminar organized by Elise Huillery and Guillaume Plantin
+<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<p>Notice that the date always comes first and is surrounded by the <code>&lt;strong&gt;...&lt;/strong&gt;</code> decorator.  So, we can use the <code>.extract_first()</code> method.  The syntax within the xpath call is important.  We must include the <code>.</code> so that xpath knows we want a relative selector, not an absolute one.  This means we would like to select from a single element of <code>events</code>, not from the entire object.  <code>//strong/text()</code> specifies the decorator we are looking for and that we want only the text, dropping the <code>&lt;strong&gt;...&lt;/strong&gt;</code>.</p>
+
+<p>The other two selectors work in the same way, but notice that we select twice for <code>item['title']</code>.  This is a nested selection and is needed because the text of the title is also a link.  Finally, yield prints the output, giving us the following:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">{</span><span class="s">&#39;date&#39;</span><span class="p">:</span> <span class="s">u&#39;21-09-2015&#39;</span><span class="p">,</span>
+ <span class="s">&#39;description&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">u&#39; Title: TBA</span><span class="se">\r\n\t\r\n\t</span><span class="s">The next Departmental Seminar will host Georgy EGOROV (Kellogg School of Management)</span><span class="se">\xa0</span><span class="s"> on September 28th.</span><span class="se">\r\n\t\r\n\t</span><span class="s">Seminar organized by Elise Huillery and Guillaume Plantin</span><span class="se">\r\n</span><span class="s">&#39;</span><span class="p">],</span>
+ <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">u&#39; Departmental Seminar : Rob SHIMER (University of Chicago)&#39;</span><span class="p">]}</span></code></pre></div>
+
+<p>And that’s it!  That is a spider!  The hardest part, for me at least, was figuring out a way to identify the item you would like to scrape.</p>
+
+<h2 id="writing-a-pipeline">Writing a Pipeline</h2>
+<p>According to the Scrapy tutorial, the easiest way to store your data is to use a command modifier to export your information to a <code>.json</code> file:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">scrapy</span> <span class="n">crawl</span> <span class="n">pipo</span> <span class="o">-</span><span class="n">o</span> <span class="n">items</span><span class="o">.</span><span class="n">json</span></code></pre></div>
+
+<p>That is all you need if you simply want to store your scraped data.  However, if you would like to do more to your data before saving it, you might consider a pipeline.  For this example, we’ll write a pipeline to clean up the items in our data.  In particular, the description of calendar events has many line break markers (<code>\r</code> or <code>\n</code>) that just make things look messy.</p>
+
+<p>First, we need to edit our <code>pipelines.py</code> script.  Here’s how the completed file looks:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">PipocrawlPipeline</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+        <span class="n">replaceable</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&quot;</span><span class="se">\r</span><span class="s">&quot;</span><span class="p">:</span> <span class="s">u&quot;&quot;</span><span class="p">,</span> <span class="s">u&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">:</span> <span class="s">u&quot; &quot;</span><span class="p">,</span> <span class="s">u&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">:</span> <span class="s">u&quot;&quot;</span> <span class="p">,</span> <span class="s">u&quot;</span><span class="se">\xa0</span><span class="s">&quot;</span><span class="p">:</span> <span class="s">u&quot;&quot;</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">replaceable</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">item</span><span class="p">[</span><span class="s">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+            <span class="n">item</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+            <span class="n">item</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">item</span></code></pre></div>
+
+<p>If you know of a better way to do this, so do I!  You can avoid this problem by wrapping the selector in the spider script with another function, but this is just to show how a pipeline works.</p>
+
+<p>This file defines a pipeline class which is run on every item.  What it does is fairly straight forward, looping through the items and replacing any line break, tabs, etc. with emtpy space or a single space.  To make Scrapy use this pipeline, you do not need to add any code to the spider script, simply uncomment the <code>ITEM_PIPELINES</code> option in the <code>settings.py</code> file and add your pipeline, along with a reference:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;PiPoCrawl.pipelines.PipocrawlPipeline&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+<span class="p">}</span></code></pre></div>
+
+<p>The reference number simply tells Scrapy in what order to run your pipelines.  You can do many other things with a pipeline, but you’ll have to discover all that for yourself!</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Using Scrapy to create web crawlers is fairly straight forward, once you get down the syntax and the file structure.  You can also make your web crawler follow links, but I’ll leave that for another post.  If you are interested in this example, I’ve posted the file folder on GitHub <a href="https://github.com/tyler-abbot/PiPoCrawl" target="_blank_">here</a>.</p>
+
+				<hr />
+				<footer class="page-footer">
+					
+
+
+<div class="author-image">
+	<img src="/images/bio-photo2.jpg" alt="Tyler Abbot">
+</div><!-- ./author-image -->
+<div class="author-content">
+	<h3 class="author-name" >Written by <span itemprop="author">Tyler Abbot</span></h3>
+	<p class="author-bio">Nerd extraordinaire.</p>
+</div><!-- ./author-content -->
+					<div class="inline-btn">
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=03%20-%20A%20Scrapy%20Webspider&amp;url=/programming/a-scrapy-webspider/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=/programming/a-scrapy-webspider/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=/programming/a-scrapy-webspider/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+</div><!-- /.share-this -->
+					<div class="page-meta">
+	<p>Updated <time datetime="2015-09-13T10:05:22Z" itemprop="datePublished">September 13, 2015</time></p>
+</div><!-- /.page-meta -->
+				</footer><!-- /.footer -->
+				<aside>
+					
+				</aside>
+			</div><!-- /.content -->
+		</div><!-- /.inner-wrap -->
+		
+	</article><!-- ./wrap -->
+</div><!-- /#main -->
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+        
+      
+			<li><a href="" ></a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2015 <a href="">Tyler Abbot</a> powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/" rel="nofollow">Skinny Bones</a>.</p>
+</footer>
+    </div>
+
+    <script src="/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/js/main.js"></script>
+
+  </body>
+
+</html>
