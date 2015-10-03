@@ -1,29 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
+  
+
   <title>Tyler Abbot</title>
   <generator uri="https://github.com/jekyll/jekyll">Jekyll v2.4.0</generator>
-    <icon>/apple-touch-icon-precomposed.png</icon>
+    <icon>https://tyler-abbot.github.io/apple-touch-icon-precomposed.png</icon>
   <subtitle>My personal website</subtitle>
-  <link href="/atom.xml" rel="self"/>
-  <link href="/" rel="alternate" type="text/html"/>
-  <updated>2015-09-13T17:36:51+02:00</updated>
-  <id>/</id>
+  <link href="https://tyler-abbot.github.io/atom.xml" rel="self"/>
+  <link href="https://tyler-abbot.github.io/" rel="alternate" type="text/html"/>
+  <updated>2015-10-03T13:41:39+02:00</updated>
+  <id>https://tyler-abbot.github.io/</id>
   <author>
     <name>Tyler Abbot</name>
-    <uri>/</uri>
+    <uri>https://tyler-abbot.github.io/</uri>
     <email>tyler.abbot@sciencespo.fr</email>
   </author>
 
   
   <entry>
-    <title>03 - A Scrapy Webspider</title>
-    <link href="/programming/a-scrapy-webspider/"/>
-    <updated>2015-09-13T10:05:22+02:00</updated>
-    <id>/programming/a-scrapy-webspider</id>
+    <title>04 - Manipulating the File Tree</title>
+    <link href="https://tyler-abbot.github.io/programming/sys/"/>
+    <updated>2015-09-20T14:09:19+02:00</updated>
+    <id>https://tyler-abbot.github.io/programming/sys</id>
     <author>
       <name>Tyler Abbot</name>
-      <uri>/</uri>
+      <uri>https://tyler-abbot.github.io/</uri>
+      <email>tyler.abbot@sciencespo.fr</email>
+    </author>
+    <content type="html">
+      
+      &lt;nav class=&quot;toc&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#shutil-functions&quot;&gt;Shutil Functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#os-functions&quot;&gt;OS Functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#glob-functions&quot;&gt;Glob Functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/nav&gt;
+
+&lt;p&gt;I’ve recently been working on building a dataset from the Consumer Expenditure Survey and was so frustrated by the number of files to download that I decided to automate the process.  In doing so, I had to use several packages to identify files, create directories, and remove unnecessary junk.&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;shutil&lt;/code&gt; module, standing for ‘shell utility’, is part of the standard library.  It is a module containing many of the high level file operations that you would use from the standard Unix or Linux command line.  In particular, &lt;code&gt;shutil&lt;/code&gt; is useful for generating directories, copying and moving files, and changing file names.  If you are hoping to automate any data gathering work, this will be super useful.&lt;/p&gt;
+
+&lt;p&gt;Along with &lt;code&gt;shutil&lt;/code&gt;, you will probably also want the &lt;code&gt;os&lt;/code&gt; module, which will allow you to dynamically define the file path seperator so your program works on any operating system, to create directories, and to rename files.  &lt;code&gt;os&lt;/code&gt; allows you to interact directly with the operating system, so if you want to write truly modular code that deals with the file tree, you will need ot use it.&lt;/p&gt;
+
+&lt;p&gt;Finally, I used &lt;code&gt;glob&lt;/code&gt; to parse file names and identify the ones I wanted to keep and the ones I wanted to replace.&lt;/p&gt;
+
+&lt;h2 id=&quot;shutil-functions&quot;&gt;Shutil Functions&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code&gt;shutil.copy(src, dst)&lt;/code&gt;&lt;/strong&gt; - Copy the contents of file &lt;code&gt;src&lt;/code&gt; to a new file at &lt;code&gt;dst&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code&gt;shutil.copytree(src, dst)&lt;/code&gt;&lt;/strong&gt; - Copy an entire directory tree “rooted” at source.  So this copies all the files and folders in &lt;code&gt;src&lt;/code&gt; to a new folder at &lt;code&gt;dst&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code&gt;shutil.rmtree(path)&lt;/code&gt;&lt;/strong&gt; - Remove an entire directory rooted at &lt;code&gt;path&lt;/code&gt;.  This is nice if you would like to combine files and clean up after yourself.  For instance, if you download 100 zip files in different folders and need one file from within them, you can gather, copy or move it, and delete the zip.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code&gt;shutil.move(src, dst)&lt;/code&gt;&lt;/strong&gt; - Move a folder from &lt;code&gt;src&lt;/code&gt; to &lt;code&gt;dist&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;os-functions&quot;&gt;OS Functions&lt;/h2&gt;
+&lt;p&gt;This package is massive, so I’m not even going to try to list the functions it has.  However, you will probably use the seperator function:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code&gt;os.sep&lt;/code&gt;&lt;/strong&gt; - Returns the file path seperator for the current operating system.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;glob-functions&quot;&gt;Glob Functions&lt;/h2&gt;
+&lt;p&gt;Glob returns all of the path names that match some specified pattern.  The functions use the glob rules defined by the Unix shell.  If you don’t know these rules, &lt;a href=&quot;https://en.wikipedia.org/wiki/Glob_(programming)#Syntax&quot; target=&quot;_blank&quot;&gt;check them out on wikipedia&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code&gt;glob.glob(pathname)&lt;/code&gt;&lt;/strong&gt; - Returns a list of all pathnames in the pwd that match the glob rules given in &lt;code&gt;pathname&lt;/code&gt;.  For instance, “jo*” is a right wildcard and matches anything that starts with “jo”, eg “joe”, “joseph”, etc., but not “dojo”.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code&gt;glob.iglob(pathname)&lt;/code&gt;&lt;/strong&gt; - Returns the same thing, but as an iterator.  This is great, as it doesn’t store all of the file names, but you can recover them easily.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Yes, this is a ridiculously short and unsatisfactory blog post.  You’ll understand why as you start working with these packages.  They are massive (except glob) and very powerful.  It turns out I bit off more than I could chew by deciding to write this post, but hey, maybe someone will use these functions and benefit from having them all in one place!&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>03 - A Scrapy Webspider</title>
+    <link href="https://tyler-abbot.github.io/programming/a-scrapy-webspider/"/>
+    <updated>2015-09-13T10:05:22+02:00</updated>
+    <id>https://tyler-abbot.github.io/programming/a-scrapy-webspider</id>
+    <author>
+      <name>Tyler Abbot</name>
+      <uri>https://tyler-abbot.github.io/</uri>
       <email>tyler.abbot@sciencespo.fr</email>
     </author>
     <content type="html">
@@ -177,12 +253,12 @@
   
   <entry>
     <title>02 - Posting to Websites in Python</title>
-    <link href="/programming/request_package/"/>
+    <link href="https://tyler-abbot.github.io/programming/request_package/"/>
     <updated>2015-06-22T10:27:01+02:00</updated>
-    <id>/programming/request_package</id>
+    <id>https://tyler-abbot.github.io/programming/request_package</id>
     <author>
       <name>Tyler Abbot</name>
-      <uri>/</uri>
+      <uri>https://tyler-abbot.github.io/</uri>
       <email>tyler.abbot@sciencespo.fr</email>
     </author>
     <content type="html">
@@ -308,12 +384,12 @@
   
   <entry>
     <title>05 - Email Forms in Jekyll Site</title>
-    <link href="/programming/email-forms-in-jekyll-site/"/>
+    <link href="https://tyler-abbot.github.io/programming/email-forms-in-jekyll-site/"/>
     <updated>2015-05-31T14:53:20+02:00</updated>
-    <id>/programming/email-forms-in-jekyll-site</id>
+    <id>https://tyler-abbot.github.io/programming/email-forms-in-jekyll-site</id>
     <author>
       <name>Tyler Abbot</name>
-      <uri>/</uri>
+      <uri>https://tyler-abbot.github.io/</uri>
       <email>tyler.abbot@sciencespo.fr</email>
     </author>
     <content type="html">
@@ -348,12 +424,12 @@
   
   <entry>
     <title>04 - Text Editors</title>
-    <link href="/programming/text-editors/"/>
+    <link href="https://tyler-abbot.github.io/programming/text-editors/"/>
     <updated>2015-05-10T10:20:57+02:00</updated>
-    <id>/programming/text-editors</id>
+    <id>https://tyler-abbot.github.io/programming/text-editors</id>
     <author>
       <name>Tyler Abbot</name>
-      <uri>/</uri>
+      <uri>https://tyler-abbot.github.io/</uri>
       <email>tyler.abbot@sciencespo.fr</email>
     </author>
     <content type="html">
@@ -427,12 +503,12 @@ which flake8&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   
   <entry>
     <title>03 - GitHub</title>
-    <link href="/programming/github/"/>
+    <link href="https://tyler-abbot.github.io/programming/github/"/>
     <updated>2015-04-26T18:31:06+02:00</updated>
-    <id>/programming/github</id>
+    <id>https://tyler-abbot.github.io/programming/github</id>
     <author>
       <name>Tyler Abbot</name>
-      <uri>/</uri>
+      <uri>https://tyler-abbot.github.io/</uri>
       <email>tyler.abbot@sciencespo.fr</email>
     </author>
     <content type="html">
@@ -497,12 +573,12 @@ which flake8&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   
   <entry>
     <title>01 - Why Python? I Already Know R!</title>
-    <link href="/programming/why-python-i-already-know-r/"/>
+    <link href="https://tyler-abbot.github.io/programming/why-python-i-already-know-r/"/>
     <updated>2015-04-16T18:13:19+02:00</updated>
-    <id>/programming/why-python-i-already-know-r</id>
+    <id>https://tyler-abbot.github.io/programming/why-python-i-already-know-r</id>
     <author>
       <name>Tyler Abbot</name>
-      <uri>/</uri>
+      <uri>https://tyler-abbot.github.io/</uri>
       <email>tyler.abbot@sciencespo.fr</email>
     </author>
     <content type="html">
@@ -548,12 +624,12 @@ which flake8&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   
   <entry>
     <title>02 - How to Make Posts in Jekyll.</title>
-    <link href="/programming/how-to-make-posts/"/>
+    <link href="https://tyler-abbot.github.io/programming/how-to-make-posts/"/>
     <updated>2015-04-12T14:55:42+02:00</updated>
-    <id>/programming/how-to-make-posts</id>
+    <id>https://tyler-abbot.github.io/programming/how-to-make-posts</id>
     <author>
       <name>Tyler Abbot</name>
-      <uri>/</uri>
+      <uri>https://tyler-abbot.github.io/</uri>
       <email>tyler.abbot@sciencespo.fr</email>
     </author>
     <content type="html">
@@ -608,12 +684,12 @@ which flake8&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   
   <entry>
     <title>01 - Packages.</title>
-    <link href="/programming/packages/"/>
+    <link href="https://tyler-abbot.github.io/programming/packages/"/>
     <updated>2015-04-12T14:52:06+02:00</updated>
-    <id>/programming/packages</id>
+    <id>https://tyler-abbot.github.io/programming/packages</id>
     <author>
       <name>Tyler Abbot</name>
-      <uri>/</uri>
+      <uri>https://tyler-abbot.github.io/</uri>
       <email>tyler.abbot@sciencespo.fr</email>
     </author>
     <content type="html">
@@ -658,12 +734,12 @@ which flake8&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   
   <entry>
     <title>01 - How to Setup Ipython.</title>
-    <link href="/programming/how-to-setup-ipython/"/>
+    <link href="https://tyler-abbot.github.io/programming/how-to-setup-ipython/"/>
     <updated>2015-04-12T11:56:17+02:00</updated>
-    <id>/programming/how-to-setup-ipython</id>
+    <id>https://tyler-abbot.github.io/programming/how-to-setup-ipython</id>
     <author>
       <name>Tyler Abbot</name>
-      <uri>/</uri>
+      <uri>https://tyler-abbot.github.io/</uri>
       <email>tyler.abbot@sciencespo.fr</email>
     </author>
     <content type="html">
@@ -713,7 +789,7 @@ which flake8&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This will open up an Ipython Notebook session in your default browser.  Then you can create a new ipython notebook, like &lt;a href=&quot;http://nbviewer.ipython.org/github/tyler-abbot/tyler-abbot.github.io/tree/master/misc/test.ipynb&quot; target=&quot;_blank&quot;&gt;this one&lt;/a&gt;.  Ipython notebooks are great teaching tools, so I’ll be using them often on this site to describe lots of things.&lt;/p&gt;
 
-&lt;p&gt;That’s it!  You are now ready to learn to program in Python.  For more on different packages, best-practices (as far as an economist knows best practices), and lots of other stuff about Python, head &lt;a href=&quot;/programming/python.html&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;That’s it!  You are now ready to learn to program in Python.  For more on different packages, best-practices (as far as an economist knows best practices), and lots of other stuff about Python, head &lt;a href=&quot;https://tyler-abbot.github.io/programming/python.html&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;. &lt;/p&gt;
 
 &lt;p&gt;For some outside sources so you can hit the ground running, check out these great resources:&lt;/p&gt;
 

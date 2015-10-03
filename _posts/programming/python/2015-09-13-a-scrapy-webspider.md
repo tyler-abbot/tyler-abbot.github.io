@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "03 - A Scrapy Webspider"
-description: "How to write and use a Scrapy web spider, as well as an example that might be useful to a social scientist."
+description: "How to write and use a Scrapy web spider, as well as an example that is comple."
 modified:
 categories: programming
 subcategories: python
