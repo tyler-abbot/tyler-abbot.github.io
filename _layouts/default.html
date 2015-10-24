@@ -15,7 +15,7 @@
     <link href="{{ site.url }}/atom.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Atom Feed">
 
     <link href="{{ site.url }}/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
-    
+
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,6 +31,7 @@
   </head>
 
   <body id="js-body">
+    {% include google_analytics.html %}
     {% include browser-upgrade.html %}
     {% include header.html %}
 <!--    {% include navigation-sliding.html %} -->
