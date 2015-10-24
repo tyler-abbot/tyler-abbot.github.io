@@ -1,7 +1,7 @@
 ---
 layout: archive
 title: ""
-date: 
+date:
 modified:
 excerpt:
 image:
@@ -12,8 +12,8 @@ image:
 ads: false
 ---
 
-<p><a href="{{ site.url }}/misc/Abbot.CV.pdf" class="btn-inverse" target="_blank">Long Form/Academic CV</a></p>
-<p><a href="{{ site.url }}/misc/Abbot.CV.pdf" class="btn-inverse" target="_blank">Short Form/Professional CV</a></p>
+<p><a href="{{ site.url }}/misc/Abbot.CV.pdf" class="btn-inverse" target="_blank" onclick=”_gaq.push([‘_trackEvent’,’Download’,’PDF’,this.href]);”>Long Form/Academic CV</a></p>
+<p><a href="{{ site.url }}/misc/Abbot.CV.pdf" class="btn-inverse" target="_blank" onclick=”_gaq.push([‘_trackEvent’,’Download’,’PDF’,this.href]);”>Short Form/Professional CV</a></p>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
