@@ -13,7 +13,7 @@ ads: false
 ---
 
 <div class="tile">
-	<a href="{{ site.url }}/programming/tips.html"><img src="/images/gears.png" /></a>
+	<a href="{{ site.url }}/tips.html"><img src="/images/gears.png" /></a>
     <h2 class="post-title">Getting Started</h2>
 	<p class="post-excerpt">If you need help getting set-up with open source software, look here for some tips and tricks.</p>
 </div>
