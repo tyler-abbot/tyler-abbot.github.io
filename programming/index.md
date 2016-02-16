@@ -21,7 +21,7 @@ ads: false
 <div class="tile">
 	<a href="{{ site.url }}/programming/tex.html"><img src="/images/tex1.png" /></a>
     <h2 class="post-title">LaTeX</h2>
-	<p class="post-excerpt">Some useful informationon writing economics papers in LaTeX.</p>
+	<p class="post-excerpt">Some useful information on writing economics papers in LaTeX.</p>
 </div>
 
 <div class="tile">
