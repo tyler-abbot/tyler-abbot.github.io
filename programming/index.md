@@ -19,13 +19,13 @@ ads: false
 </div>
 
 <div class="tile">
-	<a href="{{ site.url }}/tex"><img src="/images/tex1.png" /></a>
+	<a href="{{ site.url }}/programming/tex"><img src="/images/tex1.png" /></a>
     <h2 class="post-title">LaTeX</h2>
 	<p class="post-excerpt">Some useful information on writing economics papers in LaTeX.</p>
 </div>
 
 <div class="tile">
-	<a href="{{ site.url }}/python"><img src="/images/python1.png" /></a>
+	<a href="{{ site.url }}/programming/python"><img src="/images/python1.png" /></a>
     <h2 class="post-title">Python</h2>
 	<p class="post-excerpt">Lessons on how to leverage python as an economist.</p>
 </div>
