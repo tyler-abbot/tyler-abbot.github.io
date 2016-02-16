@@ -1,16 +1,16 @@
 ---
 layout: archive
 title: ""
-date: 
+date:
 modified:
 excerpt:
-image: 
-  feature: Rue-St-Guillaume-12_5.jpg 
+image:
+  feature: Rue-St-Guillaume-12_5_1.jpg 
   teaser:
   thumb:
 ads: false
 ---
-<figure style="float:left"> 
+<figure style="float:left">
     <img src="/images/bio-photo1.jpg" HSPACE="50" VSPACE="0" height="100" width="200">
     <figcaption> photo credit: Carli Chavez </figcaption>
 </figure>

@@ -1,11 +1,11 @@
 ---
 layout: archive
 title: ""
-date: 
+date:
 modified:
 excerpt:
 image:
-  feature: lorenz.jpg
+  feature: lorenz_1.jpg
   teaser: Jerry Ylilammi, ylilammi.com
   thumb:
 ads: false

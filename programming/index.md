@@ -1,11 +1,11 @@
 ---
 layout: archive
 title: ""
-date: 
+date:
 modified:
 excerpt:
 image:
-  feature: lorenz.jpg
+  feature: lorenz_1.jpg
   credit: Lorenz Attractor, Jerry Ylilammi, ylilammi.com
   teaser:
   thumb:

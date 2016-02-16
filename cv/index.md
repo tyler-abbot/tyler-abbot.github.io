@@ -5,7 +5,7 @@ date:
 modified:
 excerpt:
 image:
-  feature: kaon1.png
+  feature: kaon1_1.png
   credit: Kaon decay in bubble chamber. Art of Physics Collection. http://cds.cern.ch/record/39472/files/23296.jpeg
   teaser:
   thumb:
