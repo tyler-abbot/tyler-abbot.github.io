@@ -5,7 +5,7 @@ date:
 modified:
 excerpt:
 image:
-  feature: FinacialEngLogo3.jpg
+  feature: FinacialEngLogo4.jpg
   credit: Columbia University, Financial Engineering, Coursera
   teaser:
   thumb:
@@ -23,7 +23,10 @@ ads: false
 </div>
 
 <div class="notice-inverse">
-    <p><h5>Financial Markets Under a Continuum of Preference Types</h5> <em>Coming Soon</em></p>
+    <em>Coming Soon</em>
+    <p><h5>Financial Markets Under a Continuum of Preference Types</h5> </p>
+    <p><h5>Estimating the Distribution of Risk Preferences</h5> </p>
+    <p><h5>Labor Market Matching With Precautionary Savings</h5> </p>
 </div>
 
 <script>
