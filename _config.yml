@@ -8,7 +8,7 @@ teaser: paper_stack.jpg # 400x250 px default teaser image used in image archive 
 locale: "en_US"
 
 # NOTE: To run local server, uncomment baseurl and comment url.
-url: 'https://tyler-abbot.github.io'
+url: 'tyler-abbot.github.io'
 #baseurl: 'http://localhost:4000/'
 icon: pipo_logo.png #The image to be used for facebook posts. Always the same
 
