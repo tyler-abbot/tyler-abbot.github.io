@@ -1,40 +1,47 @@
-# Site wide configuration
-
+# Site settings
 title: Tyler Abbot
-description: My personal website
-logo: mandelbrot4.png # 120x120 px default image used for Twitter summary card
-teaser: paper_stack.jpg # 400x250 px default teaser image used in image archive grid
-# In order to spin up a functioning local server, comment out url and uncomment basurl
-locale: "en_US"
 
-# NOTE: To run local server, uncomment baseurl and comment url.
-url: 'https://tyler-abbot.github.io'
-#baseurl: 'http://localhost:4000/'
-icon: pipo_logo.png #The image to be used for facebook posts. Always the same
+# Build settings
+markdown: kramdown
+permalink: pretty
 
-# Jekyll configuration
+favicon: "/assets/img/temp_chem.jpg"
+
+port: 3000
+url: http://localhost:3000
 
 sass:
-    sass_dir: _sass
-    style: compressed
-permalink: /:categories/:title/
-kramdown:
-  toc_levels: 1..2
-highlighter: pygments
-gems:
-  - jekyll-sitemap
+  sass_dir: assets/css
+  style: :nested
 
-# Site owner
-owner:
-  name: Tyler Abbot
-  email: tyler.abbot@sciencespo.fr
-  twitter:
-  google:
-    ad-client:
-    ad-slot:
-  bio:  Nerd extraordinaire.
-  avatar: bio-photo2.jpg # 160x160 px image for author byline
-disqus-shortname:
+# Add bibliography
+gems: ['jekyll/scholar']
 
+scholar:
+  style: assets/bib/_ieee-with-url.csl
+  locale: en
 
-exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
+  sort_by: none
+  order: ascending
+
+  group_by: none
+  group_order: ascending
+
+  source: assets/bib
+  bibliography: _mybib.bib
+  bibliography_template: "{{reference}}"
+
+  replace_strings: true
+  join_strings:    true
+
+  use_raw_bibtex_entry: false
+  bibtex_filters:
+  - superscript
+  - latex
+  - HTML
+
+  details_dir:    bibliography
+  details_layout: bibtex.html
+  details_link:   Details
+
+  query: "@*"
