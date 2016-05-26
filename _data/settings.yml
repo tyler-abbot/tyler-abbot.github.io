@@ -1,0 +1,17 @@
+#----------------------
+# About section
+
+blurb: <p>I am a doctoral candidate in the Department of Economics at Sciences Po Paris. My research focuses on heterogeneous agent models which include both idiosyncratic and aggregate risk. I am particularly interested in Mean Field Games, mathematical finance, stochastic calculus, and non-linear filtering. Although the majority of my work so far has been theoretical, I am working on empirical methods in high dimension using non-linear filtering.</p>
+
+#----------------------
+# Courses section
+courses:
+  - {title: Graduate Macroeconomics 2 (Assistant Instructor), semester: Spring 2016, school: Sciences Po, description: Lead two hour weekly session on problem sets for associated lecture course., link: "http://www.sciencespo.fr/ecole-doctorale/fr/content/master-economie" }
+  - {title: "PyShop: Python for Economists (Instructor)", semester: Fall 2015, school: Sciences Po, description: A five week workshop on Python for economists, covering numerical methods, empirical applications, and parallel computing., link: "https://github.com/tyler-abbot/PyShop" }
+  - {title: Intermediate Macroeconomics (Teaching Assistant), semester: Fall 2014, school: Sciences Po, description: Mainly grading and answering questions, but lead two sessions on excel and basic time series., link: "https://sites.google.com/site/zsofiabarany/teaching/intermediate-macro" }
+#----------------------
+# Contact
+contact-info: <p>Tyler Abbot<br>Department of Economics<br>Sciences Po<br>28 rue des Saints Pères<br>75007 Paris<br>France</p>
+
+contact-links:
+  - {contact-text: Github, contact-link: "https://github.com/tyler-abbot", icon: 'favicon.html'}
