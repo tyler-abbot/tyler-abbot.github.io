@@ -235,7 +235,7 @@ header nav a, footer .content-wrap .copyright, footer .content-wrap a, .about-lo
 header {
   height: 200px;
   max-width: 960px;
-  background: url(http://tyler-abbot.github.io/DrJekyll/img/image-bg.jpg) center center;
+  background: url(http://tyler-abbot.github.io/DrJekyll/assets/img/image-bg.jpg) center center;
   background-size: cover;
   margin: 0 auto;
   float: none; }
