@@ -314,7 +314,7 @@ section {
   .about-lockup .face {
     height: 220px;
     width: 200px;
-    background: url(/assets/img/bio-photo.png);
+    background: url(http://tyler-abbot.github.io/DrJekyll/assets/img/bio-photo.png);
     background-size: cover;
     order: 1; }
   .about-lockup .about-txt {
