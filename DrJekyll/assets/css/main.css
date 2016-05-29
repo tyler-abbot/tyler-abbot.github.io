@@ -260,7 +260,7 @@ header {
 footer {
   height: 100px;
   max-width: 960px;
-  background: url(../img/image-bg.jpg) center center;
+  background: url(..DrJekyll/assets/img/image-bg.jpg) center center;
   background-size: cover;
   margin: 0 auto;
   float: none; }
