@@ -226,16 +226,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%; }
 
-jek-header nav a, footer .content-wrap .copyright, footer .content-wrap a, .about-lockup .about-txt h3, h3 {
+header nav a, footer .content-wrap .copyright, footer .content-wrap a, .about-lockup .about-txt h3, h3 {
   color: rgba(0, 0, 0, 0.7);
   font-size: 18px;
   font-weight: 700;
   font-text-transform: uppercase; }
 
-jek-header {
+header {
   height: 200px;
   max-width: 960px;
-  background: url(tyler-abbot.github.io/DrJekyll/assets/img/image-bg.jpg) center center;
+  background: url(../img/image-bg.jpg) center center;
   background-size: cover;
   margin: 0 auto;
   float: none; }
@@ -260,7 +260,7 @@ jek-header {
 footer {
   height: 100px;
   max-width: 960px;
-  background: url(..DrJekyll/assets/img/image-bg.jpg) center center;
+  background: url(../img/image-bg.jpg) center center;
   background-size: cover;
   margin: 0 auto;
   float: none; }
@@ -314,7 +314,7 @@ section {
   .about-lockup .face {
     height: 220px;
     width: 200px;
-    background: url(http://tyler-abbot.github.io/DrJekyll/assets/img/bio-photo.png);
+    background: url(/assets/img/bio-photo.png);
     background-size: cover;
     order: 1; }
   .about-lockup .about-txt {
