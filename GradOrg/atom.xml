@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Sciences Po Grad Econ</title>
- <link href="http://hyde.getpoole.com/atom.xml" rel="self"/>
- <link href="http://hyde.getpoole.com/"/>
- <updated>2016-06-29T16:14:41+02:00</updated>
- <id>http://hyde.getpoole.com</id>
+ <link href="http://tyler-abbot.github.io/GradOrg/atom.xml" rel="self"/>
+ <link href="http://tyler-abbot.github.io/GradOrg/"/>
+ <updated>2016-06-29T16:22:36+02:00</updated>
+ <id>http://tyler-abbot.github.io/GradOrg</id>
  <author>
    <name>Tyler Abbot</name>
    <email></email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Our New Site</title>
-   <link href="http://hyde.getpoole.com/2016/06/29/our-new-site/"/>
+   <link href="http://tyler-abbot.github.io/GradOrg/2016/06/29/our-new-site/"/>
    <updated>2016-06-29T00:00:00+02:00</updated>
-   <id>http://hyde.getpoole.com/2016/06/29/our-new-site</id>
+   <id>http://tyler-abbot.github.io/GradOrg/2016/06/29/our-new-site</id>
    <content type="html">&lt;p&gt;This is the topline post on the rough draft of our new site! We can discuss layout later, but for now the home page is a blog-style list of posts.&lt;/p&gt;
 
 &lt;h3&gt;Below you&amp;#39;ll find all of the content in the original template, for posterity&amp;#39;s sake.&lt;/h3&gt;
@@ -62,9 +62,9 @@
  
  <entry>
    <title>Example content</title>
-   <link href="http://hyde.getpoole.com/2012/02/07/example-content/"/>
+   <link href="http://tyler-abbot.github.io/GradOrg/2012/02/07/example-content/"/>
    <updated>2012-02-07T00:00:00+01:00</updated>
-   <id>http://hyde.getpoole.com/2012/02/07/example-content</id>
+   <id>http://tyler-abbot.github.io/GradOrg/2012/02/07/example-content</id>
    <content type="html">&lt;div class=&quot;message&quot;&gt;
   Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
 &lt;/div&gt;
@@ -209,9 +209,9 @@
  
  <entry>
    <title>What's Jekyll?</title>
-   <link href="http://hyde.getpoole.com/2012/02/06/whats-jekyll/"/>
+   <link href="http://tyler-abbot.github.io/GradOrg/2012/02/06/whats-jekyll/"/>
    <updated>2012-02-06T00:00:00+01:00</updated>
-   <id>http://hyde.getpoole.com/2012/02/06/whats-jekyll</id>
+   <id>http://tyler-abbot.github.io/GradOrg/2012/02/06/whats-jekyll</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From &lt;a href=&quot;https://github.com/mojombo/jekyll/blob/master/README.markdown&quot;&gt;the project&amp;#39;s readme&lt;/a&gt;:&lt;/p&gt;
 
 &lt;blockquote&gt;
