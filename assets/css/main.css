@@ -627,6 +627,11 @@ h3 {
   width: auto;
   font-size: 18px; }
 
+.external_link {
+  font-size: 18px;
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.8); }
+
 .lecture_list {
   margin: 20px 0px 0px 20px;
   display: block;
