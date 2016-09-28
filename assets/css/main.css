@@ -257,6 +257,9 @@ header {
     header h1:hover {
       color: black; }
 
+@media screen and (max-width: 650px) {
+  header {
+    height: 250px; } }
 footer {
   height: 100px;
   max-width: 960px;
@@ -327,6 +330,13 @@ section {
       margin-left: -20px;
       padding-top: 10;
       text-align: left; }
+
+.blurb {
+  max-width: 600px;
+  padding: 0 10px;
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 100; }
 
 @media screen and (max-width: 650px) {
   .about-lockup {
@@ -404,9 +414,9 @@ h3 {
   .course {
     display: block;
     width: 100%;
-    height: 40px;
+    height: 65px;
     float: none;
-    padding: 10px 0px; } }
+    padding: 20px 0px 10px 0px; } }
 .contact-section {
   max-width: 960px;
   margin: 0 auto;
